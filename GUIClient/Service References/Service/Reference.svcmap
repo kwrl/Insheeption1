@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="072dd852-238c-49df-9490-238c5b5c77ea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50293/Insheeption.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Insheeption2.xsd" MetadataType="Schema" ID="092e7163-b430-47a4-8e17-a0cb083359a4" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?xsd=xsd0" />
+    <MetadataFile FileName="Insheeption.wsdl" MetadataType="Wsdl" ID="068b2682-65f5-49be-9d1d-a13c76ce5480" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?wsdl" />
+    <MetadataFile FileName="Insheeption1.xsd" MetadataType="Schema" ID="e5977e95-37a5-4c2c-a519-572d5c666e02" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?xsd=xsd1" />
+    <MetadataFile FileName="Insheeption.disco" MetadataType="Disco" ID="069cf647-1c33-4f0a-a291-064151b2d8cf" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?disco" />
+    <MetadataFile FileName="Insheeption.xsd" MetadataType="Schema" ID="7a279ce4-f8ab-40dc-accc-44d9beb80582" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?xsd=xsd2" />
+    <MetadataFile FileName="Insheeption3.xsd" MetadataType="Schema" ID="60a5c8b8-dc48-4a07-8cf6-3757005ef5bf" SourceId="1" SourceUrl="http://localhost:50293/Insheeption.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

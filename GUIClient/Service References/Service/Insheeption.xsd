@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Insheeption" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Insheeption" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Authentication">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlockID" type="xs:int" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Authentication" nillable="true" type="tns:Authentication" />
+  <xs:complexType name="Flock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="flockID" type="xs:int" />
+      <xs:element minOccurs="0" name="sheep" nillable="true" type="tns:ArrayOfSheep" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Flock" nillable="true" type="tns:Flock" />
+  <xs:complexType name="ArrayOfSheep">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sheep" nillable="true" type="tns:Sheep" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSheep" nillable="true" type="tns:ArrayOfSheep" />
+  <xs:complexType name="Sheep">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="healthLog" nillable="true" type="tns:ArrayOfHealthStatus" />
+      <xs:element minOccurs="0" name="positionLog" nillable="true" type="tns:ArrayOfPosition" />
+      <xs:element minOccurs="0" name="sheepID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sheep" nillable="true" type="tns:Sheep" />
+  <xs:complexType name="ArrayOfHealthStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HealthStatus" nillable="true" type="tns:HealthStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHealthStatus" nillable="true" type="tns:ArrayOfHealthStatus" />
+  <xs:complexType name="HealthStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alarm" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Pulse" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HealthStatus" nillable="true" type="tns:HealthStatus" />
+  <xs:complexType name="ArrayOfPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Position" nillable="true" type="tns:Position" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPosition" nillable="true" type="tns:ArrayOfPosition" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
+</xs:schema>

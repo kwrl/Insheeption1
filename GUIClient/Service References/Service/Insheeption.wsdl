@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Insheeption" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50293/Insheeption.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50293/Insheeption.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50293/Insheeption.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Insheeption" />
+      <xsd:import schemaLocation="http://localhost:50293/Insheeption.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISheepService_LoadFlockByFlockID_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadFlockByFlockID" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_LoadFlockByFlockID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadFlockByFlockIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_LoadFlockBySheepID_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadFlockBySheepID" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_LoadFlockBySheepID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadFlockBySheepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_LoadAllFlockIDs_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadAllFlockIDs" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_LoadAllFlockIDs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadAllFlockIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_GetHealthLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHealthLog" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_GetHealthLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHealthLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_CreateNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUser" />
+  </wsdl:message>
+  <wsdl:message name="ISheepService_CreateNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISheepService">
+    <wsdl:operation name="LoadFlockByFlockID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISheepService/LoadFlockByFlockID" message="tns:ISheepService_LoadFlockByFlockID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISheepService/LoadFlockByFlockIDResponse" message="tns:ISheepService_LoadFlockByFlockID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadFlockBySheepID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISheepService/LoadFlockBySheepID" message="tns:ISheepService_LoadFlockBySheepID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISheepService/LoadFlockBySheepIDResponse" message="tns:ISheepService_LoadFlockBySheepID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllFlockIDs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISheepService/LoadAllFlockIDs" message="tns:ISheepService_LoadAllFlockIDs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISheepService/LoadAllFlockIDsResponse" message="tns:ISheepService_LoadAllFlockIDs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHealthLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISheepService/GetHealthLog" message="tns:ISheepService_GetHealthLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISheepService/GetHealthLogResponse" message="tns:ISheepService_GetHealthLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISheepService/CreateNewUser" message="tns:ISheepService_CreateNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISheepService/CreateNewUserResponse" message="tns:ISheepService_CreateNewUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISheepService" type="tns:ISheepService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadFlockByFlockID">
+      <soap:operation soapAction="http://tempuri.org/ISheepService/LoadFlockByFlockID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadFlockBySheepID">
+      <soap:operation soapAction="http://tempuri.org/ISheepService/LoadFlockBySheepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllFlockIDs">
+      <soap:operation soapAction="http://tempuri.org/ISheepService/LoadAllFlockIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHealthLog">
+      <soap:operation soapAction="http://tempuri.org/ISheepService/GetHealthLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap:operation soapAction="http://tempuri.org/ISheepService/CreateNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Insheeption">
+    <wsdl:port name="BasicHttpBinding_ISheepService" binding="tns:BasicHttpBinding_ISheepService">
+      <soap:address location="http://localhost:50293/Insheeption.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

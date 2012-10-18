@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d4dfee11-5979-4685-81c5-656e0a86df51" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2793/SheepService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SheepService.disco" MetadataType="Disco" ID="24617866-fa8b-4785-befa-24b8c6b3dd15" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?disco" />
+    <MetadataFile FileName="SheepService.xsd" MetadataType="Schema" ID="3a4090bd-f2a2-4bde-bca7-891c92c30fb7" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SheepService.wsdl" MetadataType="Wsdl" ID="11cbe606-3b94-4b83-bb3f-4e46f54a20f9" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?wsdl" />
+    <MetadataFile FileName="SheepService1.xsd" MetadataType="Schema" ID="d9044f25-68f7-4f1c-9e0f-de9823d7668c" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SheepService2.xsd" MetadataType="Schema" ID="55621387-48c5-409c-b5de-2d3cfe742929" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SheepService3.xsd" MetadataType="Schema" ID="902b9b55-e04f-4838-81df-573910fe3322" SourceId="1" SourceUrl="http://localhost:2793/SheepService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
