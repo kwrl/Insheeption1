@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insheeption", "Insheeption\Insheeption.csproj", "{3E6CEBD6-4018-44A6-A56D-3583FFBB85D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIClient", "..\temp\GUIClient\GUIClient.csproj", "{859B5ECD-C8EC-4976-9600-67276F079C83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIClient", "GUIClient\GUIClient.csproj", "{859B5ECD-C8EC-4976-9600-67276F079C83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
