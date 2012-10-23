@@ -8,3 +8,8 @@ C:\Users\LPC7\Desktop\NyVersjon17.10.12\Insheeption\bin\Insheeption.pdb
 C:\Users\LPC7\Desktop\NyVersjon17.10.12\Insheeption\obj\Debug\Insheeption.csprojResolveAssemblyReference.cache
 C:\Users\LPC7\Desktop\NyVersjon17.10.12\Insheeption\obj\Debug\Insheeption.dll
 C:\Users\LPC7\Desktop\NyVersjon17.10.12\Insheeption\obj\Debug\Insheeption.pdb
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.csprojResolveAssemblyReference.cache
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.dll
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.pdb
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.dll
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.pdb

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using GUIClient;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -20,6 +21,7 @@ namespace WindowsFormsApplication1
         private DataTable dataTable;
         private BindingSource bindingSource;
         private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        
 
         public Form3()
         {
@@ -51,8 +53,13 @@ namespace WindowsFormsApplication1
             }
             String password = s.ToString();
 
-            // lblForgotPassword.Text = password;
+            GUIClient.ServiceReference1.SheepServiceClient client = new GUIClient.ServiceReference1.SheepServiceClient();
 
+            bool login= client.NormalLogin(strEmail, strPassword);
+            lblForgotPassword.Text = Convert.ToString(login);
+
+            // lblForgotPassword.Text = password;
+            /*
             dbcMySql = new MySqlConnection(myconnectionstring);
             dbcMySql.Open();
             MySqlCommand cmd = new MySqlCommand();
@@ -65,17 +72,17 @@ namespace WindowsFormsApplication1
             {
                 res = reader.GetString(0);
             }
+            */
 
+            //dbcMySql.Close();
 
-            dbcMySql.Close();
-
-            if (res != "")
+            if (login == true)
             {
-                lblForgotPassword.Text = res;
-
+                
+                // lblForgotPassword.Text = res;
+                /*
                 if (cbxRememberMe.Checked == true)
                 {
-
                     dbcMySql = new MySqlConnection(myconnectionstring);
                     dbcMySql.Open();
                     MySqlCommand cmd2 = new MySqlCommand();
@@ -83,18 +90,18 @@ namespace WindowsFormsApplication1
                     cmd2.Connection = dbcMySql;
                     cmd2.ExecuteReader();
                     dbcMySql.Close();
-
-                    
-
                 }
-                
+                */
+                /*
                 Form1 f = new Form1();
                 this.Hide();
                 f.Show();
-                
+                */
+                //lblForgotPassword.Text = Convert.ToString(login);
             }
             else
             {
+                //lblForgotPassword.Text = "Herp derp";
                 lblLoginAgain.Visible = true;
             }
         }

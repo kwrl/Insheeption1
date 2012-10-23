@@ -78,6 +78,11 @@ namespace Insheeption
             return databaseModule.LoadAllFlockIDs(login.FarmerID);
         }
 
+        public bool NormalLogin(String brukernavn, String passord) 
+        {
+            return databaseModule.NormalLogin(new Authentication(brukernavn, passord));
+        }
+
         List<HealthStatus> ISheepService.GetHealthLog(int sheepID, DateTime startTime, DateTime stopTime, Authentication login)
         {
             if (!databaseModule.NormalLogin(login))

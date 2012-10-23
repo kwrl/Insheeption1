@@ -30,6 +30,9 @@ namespace Insheeption
         //Oppretter en ny bruker, returnerer hvor vidt operasjonen var vellykket eller ei.
         [OperationContract]
         bool CreateNewUser(Authentication newUser, Authentication adminAuthentication);
+
+        [OperationContract]
+        bool NormalLogin(String brukernavn, String passord);
     }
 
     [DataContract]
@@ -121,6 +124,8 @@ namespace Insheeption
     [DataContract]
     public class Authentication
     {
+
+        
         [DataMember]
         public string Username { get; set; }
         [DataMember]
@@ -133,6 +138,12 @@ namespace Insheeption
             this.Username = Username;
             this.Password = Password;
             this.FarmerID = FarmerID;
+        }
+
+        public Authentication(String brukernavn, String passord) {
+
+            this.Username = brukernavn;
+            this.Password = passord;
         }
     }
 }

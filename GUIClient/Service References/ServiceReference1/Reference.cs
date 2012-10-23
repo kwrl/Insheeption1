@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GUIClient.ServiceReference {
+namespace GUIClient.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -103,7 +103,7 @@ namespace GUIClient.ServiceReference {
         private int flockIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GUIClient.ServiceReference.Sheep[] sheepField;
+        private GUIClient.ServiceReference1.Sheep[] sheepField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -129,7 +129,7 @@ namespace GUIClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public GUIClient.ServiceReference.Sheep[] sheep {
+        public GUIClient.ServiceReference1.Sheep[] sheep {
             get {
                 return this.sheepField;
             }
@@ -161,10 +161,10 @@ namespace GUIClient.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GUIClient.ServiceReference.HealthStatus[] healthLogField;
+        private GUIClient.ServiceReference1.HealthStatus[] healthLogField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GUIClient.ServiceReference.Position[] positionLogField;
+        private GUIClient.ServiceReference1.Position[] positionLogField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int sheepIDField;
@@ -180,7 +180,7 @@ namespace GUIClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public GUIClient.ServiceReference.HealthStatus[] healthLog {
+        public GUIClient.ServiceReference1.HealthStatus[] healthLog {
             get {
                 return this.healthLogField;
             }
@@ -193,7 +193,7 @@ namespace GUIClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public GUIClient.ServiceReference.Position[] positionLog {
+        public GUIClient.ServiceReference1.Position[] positionLog {
             get {
                 return this.positionLogField;
             }
@@ -383,35 +383,35 @@ namespace GUIClient.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ISheepService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ISheepService")]
     public interface ISheepService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/LoadFlockByFlockID", ReplyAction="http://tempuri.org/ISheepService/LoadFlockByFlockIDResponse")]
-        GUIClient.ServiceReference.Flock LoadFlockByFlockID(int flockID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login);
+        GUIClient.ServiceReference1.Flock LoadFlockByFlockID(int flockID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/LoadFlockBySheepID", ReplyAction="http://tempuri.org/ISheepService/LoadFlockBySheepIDResponse")]
-        GUIClient.ServiceReference.Flock LoadFlockBySheepID(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login);
+        GUIClient.ServiceReference1.Flock LoadFlockBySheepID(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/LoadAllFlockIDs", ReplyAction="http://tempuri.org/ISheepService/LoadAllFlockIDsResponse")]
-        int[] LoadAllFlockIDs(GUIClient.ServiceReference.Authentication authentication);
+        int[] LoadAllFlockIDs(GUIClient.ServiceReference1.Authentication authentication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/GetHealthLog", ReplyAction="http://tempuri.org/ISheepService/GetHealthLogResponse")]
-        GUIClient.ServiceReference.HealthStatus[] GetHealthLog(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login);
+        GUIClient.ServiceReference1.HealthStatus[] GetHealthLog(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/CreateNewUser", ReplyAction="http://tempuri.org/ISheepService/CreateNewUserResponse")]
-        bool CreateNewUser(GUIClient.ServiceReference.Authentication newUser, GUIClient.ServiceReference.Authentication adminAuthentication);
+        bool CreateNewUser(GUIClient.ServiceReference1.Authentication newUser, GUIClient.ServiceReference1.Authentication adminAuthentication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISheepService/NormalLogin", ReplyAction="http://tempuri.org/ISheepService/NormalLoginResponse")]
         bool NormalLogin(string brukernavn, string passord);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISheepServiceChannel : GUIClient.ServiceReference.ISheepService, System.ServiceModel.IClientChannel {
+    public interface ISheepServiceChannel : GUIClient.ServiceReference1.ISheepService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SheepServiceClient : System.ServiceModel.ClientBase<GUIClient.ServiceReference.ISheepService>, GUIClient.ServiceReference.ISheepService {
+    public partial class SheepServiceClient : System.ServiceModel.ClientBase<GUIClient.ServiceReference1.ISheepService>, GUIClient.ServiceReference1.ISheepService {
         
         public SheepServiceClient() {
         }
@@ -432,23 +432,23 @@ namespace GUIClient.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public GUIClient.ServiceReference.Flock LoadFlockByFlockID(int flockID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login) {
+        public GUIClient.ServiceReference1.Flock LoadFlockByFlockID(int flockID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login) {
             return base.Channel.LoadFlockByFlockID(flockID, startTime, stopTime, login);
         }
         
-        public GUIClient.ServiceReference.Flock LoadFlockBySheepID(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login) {
+        public GUIClient.ServiceReference1.Flock LoadFlockBySheepID(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login) {
             return base.Channel.LoadFlockBySheepID(sheepID, startTime, stopTime, login);
         }
         
-        public int[] LoadAllFlockIDs(GUIClient.ServiceReference.Authentication authentication) {
+        public int[] LoadAllFlockIDs(GUIClient.ServiceReference1.Authentication authentication) {
             return base.Channel.LoadAllFlockIDs(authentication);
         }
         
-        public GUIClient.ServiceReference.HealthStatus[] GetHealthLog(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference.Authentication login) {
+        public GUIClient.ServiceReference1.HealthStatus[] GetHealthLog(int sheepID, System.DateTime startTime, System.DateTime stopTime, GUIClient.ServiceReference1.Authentication login) {
             return base.Channel.GetHealthLog(sheepID, startTime, stopTime, login);
         }
         
-        public bool CreateNewUser(GUIClient.ServiceReference.Authentication newUser, GUIClient.ServiceReference.Authentication adminAuthentication) {
+        public bool CreateNewUser(GUIClient.ServiceReference1.Authentication newUser, GUIClient.ServiceReference1.Authentication adminAuthentication) {
             return base.Channel.CreateNewUser(newUser, adminAuthentication);
         }
         
