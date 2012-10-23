@@ -40,12 +40,10 @@ namespace Insheeption
         private string password, host;
         private int port;
 
-        public EmailAlarm(string mailAccount, string displayName, string password, string host, int port)
+        public EmailAlarm(string mailAccount, string displayName, string password)
         {
             this.mailAccount = new MailAddress(mailAccount, displayName);
             this.password = password;
-            this.host = host;
-            this.port = port;
         }
 
         public EmailAlarm()
@@ -62,16 +60,16 @@ namespace Insheeption
             // Opprinnelige parametere til metoden: string to, string toName, string message 
 
             MailMessage email = new MailMessage();
-            email.From = new MailAddress("rikard.temp@gmail.com");
-            email.Subject = "Sheep Alert!";
-            email.Body = "<p>Noen har drept sauen din! Logg inn for å se hvem hva og hvor</p>";
+            email.From = new MailAddress("varsel.insheeption@gmail.com");
+            email.Subject = "[]Sheep Alert!";
+            email.Body = "<p>Noen har drept sauen din! Logg inn for å se hvem hva og hvor</p><br><i>Vennligst ikke svar på denne eposten</i>s";
             email.IsBodyHtml = true;
-            email.To.Add(new MailAddress("rikardeide@gmail.com")); // Mildertidig er det kun én epost her.
+            email.To.Add(new MailAddress("rikardeide@gmail.com")); // Mildertidig er det kun én epost her. Men add legger til en hel collection
             SmtpClient smtp = new SmtpClient();
             try
             {
                 smtp.Host = "smtp.gmail.com";
-                smtp.EnableSsl = true; //Depending on server SSL Settings true/false
+                smtp.EnableSsl = true;
                 System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
                 NetworkCred.UserName = "varsel.insheeption@gmail.com";
                 NetworkCred.Password = "Sau12345";

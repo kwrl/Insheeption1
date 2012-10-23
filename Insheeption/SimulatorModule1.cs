@@ -58,10 +58,19 @@ namespace Insheeption
     {
         private int chancePerTick;
 
-        public AlarmSimulator(int tickLimit, DatabaseModule databaseModule, Authentication rootUser)
-            : base(tickLimit, databaseModule, rootUser)
-        {
-            //Koden min skal hit
+
+        // alarmSimulator bruker databaseModule til å hente ut alle SauID i systemet, velger vilkårlig om den skal sende en alarm, velger vilkårlig 
+        // hvilken av sauene det skal være, og så skriver vi bare en Healthlog til den sauen.
+
+        public AlarmSimulator(int tickLimit, DatabaseModule databaseModule, Authentication rootUser : base(tickLimit, databaseModule, rootUser)
+        {   
+
+            // På ingen måter ferdig implementert, men prøver å vise hvordan jeg tenker. Gi gjerne tilbakemelding
+            Random rnd = new Random();
+            List<int> sauIDer = databaseModule.LoadAllSheepIDs();
+            int unluckySheep = rnd.Next(sauIDer.Count);
+            int helseBPM = rnd.Next(45);
+            databaseModule.SetHealth(sauIDer.ElementAt(unluckySheep), helseBPM);
         }
 
         protected override void Trigger()

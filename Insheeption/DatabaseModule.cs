@@ -106,9 +106,30 @@ namespace Insheeption
             return sheepIDs;
         }
 
+        // Parameterløs versjon av metoden over - for å kunne hente ut alle sauer til simulatorens 
+        public List<int> LoadAllSheepIDs()
+        {
+            List<int> sheepIDs = new List<int>();
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT SauID FROM Sauer";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                IDataRecord record = (IDataRecord)reader;
+                sheepIDs.Add(int.Parse("" + record[0]));
+            }
+            return sheepIDs;
+        }
+
         public Sheep LoadSheep(int sheepID)
         {
             throw new NotImplementedException();
+        }
+
+        // Denne skal kalles når man ønsker å sette helsestatus
+        public void SetHealth(int sheepID, int heartBeat)
+        { 
+            throw new NotImplementedException;
         }
 
         public List<HealthStatus> LoadHealthLog(int sheepID, int farmerID, DateTime startTime, DateTime stoptime)
