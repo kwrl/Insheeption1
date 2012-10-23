@@ -28,3 +28,15 @@ C:\Users\LPC7\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\WindowsForms
 C:\Users\LPC7\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
 C:\Users\LPC7\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.Properties.Resources.resources
 C:\Users\LPC7\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.csproj.GenerateResource.Cache
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\GUIClient.exe.config
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.exe
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.pdb
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.csprojResolveAssemblyReference.cache
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.Properties.Resources.resources
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\obj\x86\Debug\GUIClient.csproj.GenerateResource.Cache
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\GUIClient.exe
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\GUIClient.pdb
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\MySql.Data.dll
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\MySql.Data.Entity.dll
