@@ -48,33 +48,48 @@ namespace Insheeption
             this.port = port;
         }
 
+        public EmailAlarm()
+        {
+            //Empty Constructor
+        }
         public void callAlarm(int sheepID, DatabaseModule sender)
         {
-            
+            //Sjekk dis out
         }
 
-        public void sendMail(string to, string toName, string subject, string message)
+        public Boolean sendMail()
         {
-            MailAddress toAddress = new MailAddress(to);
-            SmtpClient client = new SmtpClient
-                                {
-                                    Host = host,
-                                    Port = port,
-                                    EnableSsl = true,
-                                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                                    UseDefaultCredentials = false,
-                                    Credentials = new NetworkCredential(mailAccount.Address, password)
-                                };
+            // Opprinnelige parametere til metoden: string to, string toName, string message 
 
-            using (var message1 = new MailMessage(mailAccount, toAddress)
-                    {
-                        Subject = subject,
-                        Body = message
-                    })
+            MailMessage email = new MailMessage();
+            email.From = new MailAddress("rikard.temp@gmail.com");
+            email.Subject = "Sheep Alert!";
+            email.Body = "<p>Noen har drept sauen din! Logg inn for å se hvem hva og hvor</p>";
+            email.IsBodyHtml = true;
+            email.To.Add(new MailAddress("rikardeide@gmail.com")); // Mildertidig er det kun én epost her.
+            SmtpClient smtp = new SmtpClient();
+            try
             {
-                client.Send(message1);
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true; //Depending on server SSL Settings true/false
+                System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+                NetworkCred.UserName = "varsel.insheeption@gmail.com";
+                NetworkCred.Password = "Sau12345";
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;//Specify your port No;
+                smtp.Send(email);
+                return true;
+
+            }
+            catch
+            {
+                email.Dispose();
+                smtp = null;
+                return false;
             }
         }
+
 
     }
 }

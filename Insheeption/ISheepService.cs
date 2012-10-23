@@ -11,6 +11,10 @@ namespace Insheeption
     [ServiceContract]
     public interface ISheepService
     {
+        //Returnerer true dersom alert-eposten blir sendt
+        [OperationContract]
+        Boolean testmail();
+
         //Returnerer en flokk med all info om sauene innenfor spesifisert tidsrom, hentet på grunnlag av FlockID til flokken
         [OperationContract]
         Flock LoadFlockByFlockID(int flockID, DateTime startTime, DateTime stopTime, Authentication login);

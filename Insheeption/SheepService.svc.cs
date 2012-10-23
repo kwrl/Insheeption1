@@ -42,6 +42,13 @@ namespace Insheeption
             this.alarmModule = new AlarmModule();
         }
 
+        //Metode for å teste mailtjenesten
+        public Boolean testmail()
+        {
+            EmailAlarm epost = new EmailAlarm();
+            return epost.sendMail();
+        }
+
         private void initSimulatorModule()
         {
             //Intervall mellom hvert tick til simulatoren i ms

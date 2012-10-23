@@ -61,6 +61,7 @@ namespace Insheeption
         public AlarmSimulator(int tickLimit, DatabaseModule databaseModule, Authentication rootUser)
             : base(tickLimit, databaseModule, rootUser)
         {
+            //Koden min skal hit
         }
 
         protected override void Trigger()
