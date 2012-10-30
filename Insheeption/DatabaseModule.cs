@@ -45,14 +45,20 @@ namespace Insheeption
             return null;
         }
 
+        // Hva skal vi med start- og stopTime her?
         public Flock LoadFlockBySheepID(int sheepID, int farmerID, DateTime startTime, DateTime stopTime)
         {
-            throw new NotImplementedException();
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT 
         }
 
-        public bool CreateNewUser(string username, string password)
+        // TODO: Klassen som kaller på CreateNewUser må sjekke om epost og passord  er VARCHAR(50)
+        public bool CreateNewUser(string epost, string password)
         {
-            throw new NotImplementedException();
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO login (epost, passord) VALUES ('" + epost + "','" + password + "')";
+            reader = command.ExecuteReader();
+            return true;
         }
 
         public bool NormalLogin(Authentication authentication)
@@ -127,9 +133,11 @@ namespace Insheeption
         }
 
         // Denne skal kalles når man ønsker å sette helsestatus
-        public void SetHealth(int sheepID, int heartBeat)
-        { 
-            throw new NotImplementedException;
+        public void SetHealth(int sheepID, int heartBeat, float temperature)
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "UPDATE Helse SET hjerteslag='" + heartBeat + "',temperatur='" + temperature + "' WHERE sauID='" + sheepID + "'";
+            reader = command.EndExecuteReader();
         }
 
         public List<HealthStatus> LoadHealthLog(int sheepID, int farmerID, DateTime startTime, DateTime stoptime)
