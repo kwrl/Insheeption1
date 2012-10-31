@@ -41,15 +41,35 @@ namespace Insheeption
             if (!LoadAllFlockIDs(farmerID).Contains(flockID))
                 return null;
 
+            Flock flokk = new Flock(flockID);
+            List<int> sheepIDs = LoadAllSheepIDs(flockID);
+            foreach(int sheepID in sheepIDs)
+                flokk.AddSheep(LoadSheep(sheepID, startTime, stopTime));
 
-            return null;
+            return flokk;
         }
 
         // Hva skal vi med start- og stopTime her?
+
+        public int GetFlockIDbySheepID(int sheepID)
+        { 
+            int flockID= 0;
+            command = connection.CreateCommand();
+            command.CommandText="SELECT flokkID FROM Sauer WHERE sauID='"+sheepID+"';";
+            reader = command.ExecuteReader();
+
+            while(reader.Read())
+            {
+                IDataRecord record = (IDataRecord)reader;
+                flockID = int.Parse("" + record);
+            }
+            return flockID;
+        }
+
         public Flock LoadFlockBySheepID(int sheepID, int farmerID, DateTime startTime, DateTime stopTime)
         {
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT 
+            int flockID = GetFlockIDbySheepID(sheepID);
+            return this.LoadFlockByFlockID(flockID, farmerID, startTime, stopTime);
         }
 
         // TODO: Klassen som kaller på CreateNewUser må sjekke om epost og passord  er VARCHAR(50)
@@ -74,7 +94,7 @@ namespace Insheeption
             }
             reader.Close();
 
-            return authentication.FarmerID!=null;
+            return authentication.FarmerID!=-1;
         }
 
         public Authentication AdminLogin(Authentication adminAuthentication)
@@ -112,7 +132,7 @@ namespace Insheeption
             return sheepIDs;
         }
 
-        // Parameterløs versjon av metoden over - for å kunne hente ut alle sauer til simulatorens 
+        // Parameterløs versjon av metoden over - for å kunne hente ut alle sauer til simulatoren
         public List<int> LoadAllSheepIDs()
         {
             List<int> sheepIDs = new List<int>();
@@ -127,20 +147,37 @@ namespace Insheeption
             return sheepIDs;
         }
 
-        public Sheep LoadSheep(int sheepID)
+
+        // Konstruerer et saueobjekt
+        public Sheep LoadSheep(int sheepID, DateTime startTime, DateTime stopTime)
         {
-            throw new NotImplementedException();
+            List<HealthStatus> healthLog = LoadHealthLog(sheepID, startTime, stopTime);
+            List<Position> positionLog = LoadPositionLog(sheepID, startTime, stopTime);
+            Sheep newSheep = new Sheep(sheepID, healthLog, positionLog);
+            return newSheep;
+        }
+
+        public string dayTimeFormat(DateTime time)
+        {
+         return String.Format("{0:YYYY-MM-DD HH:mm:ss}",time);   
         }
 
         // Denne skal kalles når man ønsker å sette helsestatus
-        public void SetHealth(int sheepID, int heartBeat, float temperature)
+        public void SetHealth(int sheepID, HealthStatus healthStatus)
         {
+            int alarm;
+            if (healthStatus.Alarm)
+            {
+                alarm = 1;
+                alarmModule.CallAlarms(sheepID,this);
+            }else alarm = 0;
+
             command = connection.CreateCommand();
-            command.CommandText = "UPDATE Helse SET hjerteslag='" + heartBeat + "',temperatur='" + temperature + "' WHERE sauID='" + sheepID + "'";
-            reader = command.EndExecuteReader();
+            command.CommandText = "INSERT INTO Helse (tid, hjerteslag, temperatur, alarm) VALUES ('" + dayTimeFormat(healthStatus.Time) + "','" + healthStatus.Pulse + "','" + healthStatus.temperature + "','" + alarm + "');";
+            reader = command.ExecuteReader();
         }
 
-        public List<HealthStatus> LoadHealthLog(int sheepID, int farmerID, DateTime startTime, DateTime stoptime)
+        public List<HealthStatus> LoadHealthLog(int sheepID, DateTime startTime, DateTime stoptime)
         {
             throw new NotImplementedException();
         }
@@ -152,7 +189,17 @@ namespace Insheeption
             throw new NotImplementedException();
         }
 
-        public void StorePosition(int sheepID, DateTime updateTime, Position position)
+        public HealthStatus loadLastHealthStatus(int sheepID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Position loadLastPosition(int sheepID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StorePosition(int sheepID, Position position)
         {
             throw new NotImplementedException();
         }

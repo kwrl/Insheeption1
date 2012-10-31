@@ -17,19 +17,19 @@ namespace Insheeption
 
         //Returnerer en flokk med all info om sauene innenfor spesifisert tidsrom, hentet på grunnlag av FlockID til flokken
         [OperationContract]
-        Flock LoadFlockByFlockID(int flockID, DateTime startTime, DateTime stopTime, Authentication login);
+        Flock LoadFlockByFlockID(int flockID, DateTime startTime, DateTime stopTime, string username, string password);
 
         //Returnerer en flokk med all info om sauene innenfor spesifisert tidsrom, hentet på grunnlag av SheepID til en sau i flokken.
         [OperationContract]
-        Flock LoadFlockBySheepID(int sheepID, DateTime startTime, DateTime stopTime, Authentication login);
+        Flock LoadFlockBySheepID(int sheepID, DateTime startTime, DateTime stopTime, string username, string password);
 
         //Returnerer alle saueflokkID
         [OperationContract]
-        List<int> LoadAllFlockIDs(Authentication authentication);
+        List<int> LoadAllFlockIDs(string username, string password);
 
         //Returnerer en helselog for for en sau innenfor spesifisert tidsrom.
         [OperationContract]
-        List<HealthStatus> GetHealthLog(int sheepID, DateTime startTime, DateTime stopTime, Authentication login);
+        List<HealthStatus> GetHealthLog(int sheepID, DateTime startTime, DateTime stopTime, string username, string password);
 
         //Oppretter en ny bruker, returnerer hvor vidt operasjonen var vellykket eller ei.
         [OperationContract]
@@ -97,9 +97,12 @@ namespace Insheeption
         public bool Alarm { get; set; }
         [DataMember]
         public DateTime Time { get; set; }
+        [DataMember]
+        public float temperature { get; set; }
 
-        public HealthStatus(int pulse, bool alarm, DateTime time)
+        public HealthStatus(int pulse, bool alarm, float temperature, DateTime time)
         {
+            this.temperature = temperature;
             this.Pulse = pulse;
             this.Alarm = alarm;
             this.Time = time;
@@ -110,13 +113,13 @@ namespace Insheeption
     public class Position
     {
         [DataMember]
-        public string Longitude { get; set; }
+        public double Longitude { get; set; }
         [DataMember]
-        public string Latitude { get; set; }
+        public double Latitude { get; set; }
         [DataMember]
         public DateTime Time { get; set; }
 
-        public Position(string longitude, string latitude, DateTime time)
+        public Position(double longitude, double latitude, DateTime time)
         {
             this.Longitude = longitude;
             this.Latitude = latitude;
@@ -145,7 +148,7 @@ namespace Insheeption
         }
 
         public Authentication(String brukernavn, String passord) {
-
+            this.FarmerID = -1;
             this.Username = brukernavn;
             this.Password = passord;
         }

@@ -60,26 +60,30 @@ namespace Insheeption
             this.simulatorModule = new SimulatorModule(period);
         }
 
-        Flock ISheepService.LoadFlockByFlockID(int flockID, DateTime startTime, DateTime stopTime, Authentication login)
+        Flock ISheepService.LoadFlockByFlockID(int flockID, DateTime startTime, DateTime stopTime, string username, string password)
         {
+            Authentication login = new Authentication(username, password);
             if (!databaseModule.NormalLogin(login))
                 return null;
 
             return databaseModule.LoadFlockByFlockID(flockID, login.FarmerID, startTime, stopTime);
         }
 
-        Flock ISheepService.LoadFlockBySheepID(int sheepID, DateTime startTime, DateTime stopTime, Authentication login)
+        Flock ISheepService.LoadFlockBySheepID(int sheepID, DateTime startTime, DateTime stopTime, string username, string password)
         {
+            Authentication login = new Authentication(username, password);
             if (!databaseModule.NormalLogin(login))
                 return null;
 
             return databaseModule.LoadFlockBySheepID(sheepID, login.FarmerID, startTime, stopTime);
         }
 
-        List<int> ISheepService.LoadAllFlockIDs(Authentication login)
+        List<int> ISheepService.LoadAllFlockIDs(string username, string password)
         {
-            
-            if(!databaseModule.NormalLogin(login))
+
+            Authentication login = new Authentication(username, password);
+
+            if (!databaseModule.NormalLogin(login))
                 return null;
 
             return databaseModule.LoadAllFlockIDs(login.FarmerID);
@@ -90,12 +94,13 @@ namespace Insheeption
             return databaseModule.NormalLogin(new Authentication(brukernavn, passord));
         }
 
-        List<HealthStatus> ISheepService.GetHealthLog(int sheepID, DateTime startTime, DateTime stopTime, Authentication login)
+        List<HealthStatus> ISheepService.GetHealthLog(int sheepID, DateTime startTime, DateTime stopTime, string username, string password)
         {
+            Authentication login = new Authentication(username, password);
             if (!databaseModule.NormalLogin(login))
                 return null;
 
-            return databaseModule.LoadHealthLog(sheepID, login.FarmerID, startTime, stopTime);
+            return databaseModule.LoadHealthLog(sheepID, startTime, stopTime);
         }
 
         bool ISheepService.CreateNewUser(Authentication newUser, Authentication adminAuthentication)
