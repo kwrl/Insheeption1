@@ -64,7 +64,6 @@ namespace Insheeption
 
         public AlarmSimulator(int tickLimit, DatabaseModule databaseModule, Authentication rootUser ): base(tickLimit, databaseModule, rootUser)
         {   
-
             // På ingen måter ferdig implementert, men prøver å vise hvordan jeg tenker. Gi gjerne tilbakemelding
             Random rnd = new Random();
             List<int> sauIDer = databaseModule.LoadAllSheepIDs();
@@ -113,8 +112,11 @@ namespace Insheeption
                 moveSheep(sheepID, startTime);
         }
 
+      
+
         private void moveSheep(int sheepID, DateTime startTime)
         {
+
             List<Position> pos = databaseModule.LoadPositionLog(sheepID, startTime, DateTime.Now);
             Position last;
             last = pos.ElementAt(pos.Count - 1);

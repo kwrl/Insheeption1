@@ -1,19 +1,15 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MySql.Data.MySqlClient;
-using System.Data.Odbc;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Insheeption
 {
-
     public class DatabaseModule
     {
-        private AlarmModule alarmModule;
+        private readonly AlarmModule alarmModule;
         private string server, database, uid, password;
-        private MySqlConnection connection;
+        private readonly MySqlConnection connection;
         private MySqlCommand command;
         private MySqlDataReader reader;
 
@@ -27,9 +23,9 @@ namespace Insheeption
 
 
             string connectLine = "SERVER=" + server + ";" +
-                                    "DATABASE=" + database + ";" +
-                                    "UID=" + uid + ";" +
-                                    "PASSWORD=" + password + ";";
+                                 "DATABASE=" + database + ";" +
+                                 "UID=" + uid + ";" +
+                                 "PASSWORD=" + password + ";";
 
 
             connection = new MySqlConnection(connectLine);
@@ -41,9 +37,9 @@ namespace Insheeption
             if (!LoadAllFlockIDs(farmerID).Contains(flockID))
                 return null;
 
-            Flock flokk = new Flock(flockID);
+            var flokk = new Flock(flockID);
             List<int> sheepIDs = LoadAllSheepIDs(flockID);
-            foreach(int sheepID in sheepIDs)
+            foreach (int sheepID in sheepIDs)
                 flokk.AddSheep(LoadSheep(sheepID, startTime, stopTime));
 
             return flokk;
@@ -52,15 +48,15 @@ namespace Insheeption
         // Hva skal vi med start- og stopTime her?
 
         public int GetFlockIDbySheepID(int sheepID)
-        { 
-            int flockID= 0;
+        {
+            int flockID = 0;
             command = connection.CreateCommand();
-            command.CommandText="SELECT flokkID FROM Sauer WHERE sauID='"+sheepID+"';";
+            command.CommandText = "SELECT flokkID FROM Sauer WHERE sauID='" + sheepID + "';";
             reader = command.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
-                IDataRecord record = (IDataRecord)reader;
+                IDataRecord record = reader;
                 flockID = int.Parse("" + record);
             }
             return flockID;
@@ -69,7 +65,7 @@ namespace Insheeption
         public Flock LoadFlockBySheepID(int sheepID, int farmerID, DateTime startTime, DateTime stopTime)
         {
             int flockID = GetFlockIDbySheepID(sheepID);
-            return this.LoadFlockByFlockID(flockID, farmerID, startTime, stopTime);
+            return LoadFlockByFlockID(flockID, farmerID, startTime, stopTime);
         }
 
         // TODO: Klassen som kaller på CreateNewUser må sjekke om epost og passord  er VARCHAR(50)
@@ -84,17 +80,18 @@ namespace Insheeption
         public bool NormalLogin(Authentication authentication)
         {
             command = connection.CreateCommand();
-            command.CommandText = "SELECT BondeID FROM login WHERE epost='" + authentication.Username + "' && passord='" + authentication.Password + "';";
+            command.CommandText = "SELECT BondeID FROM login WHERE epost='" + authentication.Username + "' && passord='" +
+                                  authentication.Password + "';";
             reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                IDataReader record = (IDataReader)reader;
+                IDataReader record = reader;
                 authentication.FarmerID = int.Parse("" + record[0]);
             }
             reader.Close();
 
-            return authentication.FarmerID!=-1;
+            return authentication.FarmerID != -1;
         }
 
         public Authentication AdminLogin(Authentication adminAuthentication)
@@ -104,13 +101,13 @@ namespace Insheeption
 
         public List<int> LoadAllFlockIDs(int farmerID)
         {
-            List<int> flockIDs = new List<int>();
+            var flockIDs = new List<int>();
             command = connection.CreateCommand();
             command.CommandText = "SELECT flokkID FROM Saueflokk WHERE BondeID='" + farmerID + "';";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                IDataRecord record = (IDataRecord)reader;
+                IDataRecord record = reader;
                 flockIDs.Add(int.Parse("" + record[0]));
             }
 
@@ -120,13 +117,13 @@ namespace Insheeption
 
         public List<int> LoadAllSheepIDs(int flockID)
         {
-            List<int> sheepIDs = new List<int>();
+            var sheepIDs = new List<int>();
             command = connection.CreateCommand();
             command.CommandText = "SELECT SauID FROM Sauer WHERE FlokkID='" + flockID + "'";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                IDataRecord record = (IDataRecord)reader;
+                IDataRecord record = reader;
                 sheepIDs.Add(int.Parse("" + record[0]));
             }
             return sheepIDs;
@@ -135,13 +132,13 @@ namespace Insheeption
         // Parameterløs versjon av metoden over - for å kunne hente ut alle sauer til simulatoren
         public List<int> LoadAllSheepIDs()
         {
-            List<int> sheepIDs = new List<int>();
+            var sheepIDs = new List<int>();
             command = connection.CreateCommand();
             command.CommandText = "SELECT SauID FROM Sauer";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                IDataRecord record = (IDataRecord)reader;
+                IDataRecord record = reader;
                 sheepIDs.Add(int.Parse("" + record[0]));
             }
             return sheepIDs;
@@ -153,13 +150,13 @@ namespace Insheeption
         {
             List<HealthStatus> healthLog = LoadHealthLog(sheepID, startTime, stopTime);
             List<Position> positionLog = LoadPositionLog(sheepID, startTime, stopTime);
-            Sheep newSheep = new Sheep(sheepID, healthLog, positionLog);
+            var newSheep = new Sheep(sheepID, healthLog, positionLog);
             return newSheep;
         }
 
         public string dayTimeFormat(DateTime time)
         {
-         return String.Format("{0:YYYY-MM-DD HH:mm:ss}",time);   
+            return String.Format("{0:YYYY-MM-DD HH:mm:ss}", time);
         }
 
         // Denne skal kalles når man ønsker å sette helsestatus
@@ -169,11 +166,14 @@ namespace Insheeption
             if (healthStatus.Alarm)
             {
                 alarm = 1;
-                alarmModule.CallAlarms(sheepID,this);
-            }else alarm = 0;
+                alarmModule.CallAlarms(sheepID, this);
+            }
+            else alarm = 0;
 
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO Helse (tid, hjerteslag, temperatur, alarm) VALUES ('" + dayTimeFormat(healthStatus.Time) + "','" + healthStatus.Pulse + "','" + healthStatus.temperature + "','" + alarm + "');";
+            command.CommandText = "INSERT INTO Helse (tid, hjerteslag, temperatur, alarm) VALUES ('" +
+                                  dayTimeFormat(healthStatus.Time) + "','" + healthStatus.Pulse + "','" +
+                                  healthStatus.temperature + "','" + alarm + "');";
             reader = command.ExecuteReader();
         }
 

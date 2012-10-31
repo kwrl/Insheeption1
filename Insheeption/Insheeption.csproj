@@ -39,19 +39,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.4.5\Assemblies\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity, Version=6.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data.Entity, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.4.5\Assemblies\MySql.Data.Entity.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Data.Entity.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web, Version=6.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Web, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.4.5\Assemblies\MySql.Web.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -107,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service References\ServiceReference1\SheepService.wsdl" />
+    <Content Include="packages.config" />
     <None Include="Service References\ServiceReference1\SheepService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -131,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

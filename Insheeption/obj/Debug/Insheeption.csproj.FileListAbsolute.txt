@@ -14,10 +14,3 @@ C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.pd
 C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.dll
 C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.pdb
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.csprojResolveAssemblyReference.cache
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.dll
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.pdb
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.dll
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.pdb
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\MySql.Data.dll
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\MySql.Data.Entity.dll
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\MySql.Web.dll
