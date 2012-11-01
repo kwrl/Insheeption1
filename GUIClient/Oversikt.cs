@@ -12,6 +12,7 @@ namespace ITprosjekt
 {
     class Oversikt
     {
+        public String loggedInEmail;
         String gammeltpassordLocal;
         DataGridViewCellEventArgs gridEvent;
         private MySqlConnection dbcMySql;
@@ -90,15 +91,16 @@ namespace ITprosjekt
             }
         }
 
-        public void fillDataGridSearchSheep(DataGridView dgwSearchSheep)
+        public void fillDataGridSearchSheep(DataGridView dgwSearchSheep, String strFlokkID)
         {
+
 
             dbcMySql = new MySqlConnection(myconnectionstring);
             dbcMySql.Open();
 
             string strQuery = "";
 
-            strQuery = "SELECT * FROM Sauer";
+            strQuery = "SELECT * FROM Sauer WHERE flokkID='" + strFlokkID + "'";
 
             sqlAdapter = new MySqlDataAdapter(strQuery, dbcMySql);
             sqlCommandBuilder = new MySqlCommandBuilder(sqlAdapter);
@@ -133,7 +135,7 @@ namespace ITprosjekt
             MessageBox.Show("Sau Endret");
         }
 
-        public void alterUser(TextBox textBoxGammelPassord, TextBox textBoxEpost, TextBox textBoxNyPassord, TextBox textBoxAdresse, TextBox textBoxTelefon, TextBox textBoxID)
+        public void alterUser(TextBox textBoxGammelPassord, TextBox textBoxEpost, TextBox textBoxNyPassord, TextBox textBoxAdresse, TextBox textBoxTelefon, TextBox textBoxID, String bondeID)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
@@ -143,19 +145,19 @@ namespace ITprosjekt
             if (textBoxGammelPassord.Text == gammeltpassordLocal)
             {
                 MySqlCommand cmd = dbconn.CreateCommand();
-                cmd.CommandText = "UPDATE login SET epost='" + textBoxEpost.Text + "', passord= '" + textBoxNyPassord.Text + "'WHERE bondeID= 8";
+                cmd.CommandText = "UPDATE login SET epost='" + textBoxEpost.Text + "', passord= '" + textBoxNyPassord.Text + "'WHERE bondeID= '" + bondeID + "'";
                 dbconn.Open();
                 cmd.ExecuteNonQuery();
                 dbconn.Close();
 
                 MySqlCommand cmd2 = dbconn.CreateCommand();
-                cmd2.CommandText = "UPDATE Kontakt SET adresse= '" + textBoxAdresse.Text + "', telefonnr= '" + textBoxTelefon.Text + "' WHERE bondeID=8";
+                cmd2.CommandText = "UPDATE Kontakt SET adresse= '" + textBoxAdresse.Text + "', telefonnr= '" + textBoxTelefon.Text + "' WHERE bondeID= '" + bondeID + "'";
                 dbconn.Open();
                 cmd2.ExecuteNonQuery();
                 dbconn.Close();
 
                 MessageBox.Show(textBoxTelefon.Text);
-                getinfobruker(textBoxGammelPassord,  textBoxEpost,  textBoxNyPassord,  textBoxAdresse,  textBoxTelefon ,textBoxID);
+                getinfobruker(textBoxGammelPassord,  textBoxEpost,  textBoxNyPassord,  textBoxAdresse,  textBoxTelefon ,textBoxID, bondeID);
             }
             else
             {
@@ -164,14 +166,14 @@ namespace ITprosjekt
 
         }
 
-        public void getStartInfo(TextBox textBoxGammelPassord, TextBox textBoxEpost)
+        public void getStartInfo(TextBox textBoxGammelPassord, TextBox textBoxEpost, String bondeID)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
 
             MySqlCommand cmdepost = dbconn.CreateCommand();
             MySqlDataReader Readerepost;
-            cmdepost.CommandText = "select epost from login where bondeID = 8"; // må endres så: bondeID = current user id
+            cmdepost.CommandText = "select epost from login where bondeID = '" + bondeID + "'"; // må endres så: bondeID = current user id
             dbconn.Open();
             Readerepost = cmdepost.ExecuteReader();
             Readerepost.Read();
@@ -180,7 +182,7 @@ namespace ITprosjekt
 
             MySqlCommand cmdpw = dbconn.CreateCommand();
             MySqlDataReader Readerpw;
-            cmdpw.CommandText = "select passord from login where bondeID = 8";
+            cmdpw.CommandText = "select passord from login where bondeID = '" + bondeID + "'";
             dbconn.Open();
             Readerpw = cmdpw.ExecuteReader();
             Readerpw.Read();
@@ -190,14 +192,14 @@ namespace ITprosjekt
 
         }
 
-        private void getinfobruker(TextBox textBoxGammelPassord, TextBox textBoxEpost, TextBox textBoxNyPassord, TextBox textBoxAdresse, TextBox textBoxTelefon, TextBox textBoxID)
+        private void getinfobruker(TextBox textBoxGammelPassord, TextBox textBoxEpost, TextBox textBoxNyPassord, TextBox textBoxAdresse, TextBox textBoxTelefon, TextBox textBoxID, String bondeID)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
 
             MySqlCommand cmdepost = dbconn.CreateCommand();
             MySqlDataReader Readerepost;
-            cmdepost.CommandText = "select epost from login where bondeID = 8"; // må endres så: bondeID = current user id
+            cmdepost.CommandText = "select epost from login where bondeID = '" + bondeID + "'"; // må endres så: bondeID = current user id
             dbconn.Open();
             Readerepost = cmdepost.ExecuteReader();
             Readerepost.Read();
@@ -206,7 +208,7 @@ namespace ITprosjekt
 
             MySqlCommand cmdpw = dbconn.CreateCommand();
             MySqlDataReader Readerpw;
-            cmdpw.CommandText = "select passord from login where bondeID = 8";
+            cmdpw.CommandText = "select passord from login where bondeID = '" + bondeID + "'";
             dbconn.Open();
             Readerpw = cmdpw.ExecuteReader();
             Readerpw.Read();
@@ -216,7 +218,7 @@ namespace ITprosjekt
 
             MySqlCommand cmdtlf = dbconn.CreateCommand();
             MySqlDataReader Readertlf;
-            cmdtlf.CommandText = "select telefonnr from Kontakt where bondeID = 8";
+            cmdtlf.CommandText = "select telefonnr from Kontakt where bondeID = '" + bondeID + "'";
             dbconn.Open();
             Readertlf = cmdtlf.ExecuteReader();
             Readertlf.Read();
@@ -225,7 +227,7 @@ namespace ITprosjekt
 
             MySqlCommand cmdadresse = dbconn.CreateCommand();
             MySqlDataReader Readeradresse;
-            cmdadresse.CommandText = "select adresse from Kontakt where bondeID = 8";
+            cmdadresse.CommandText = "select adresse from Kontakt where bondeID = '" + bondeID + "'";
             dbconn.Open();
             Readeradresse = cmdadresse.ExecuteReader();
             Readeradresse.Read();
@@ -234,7 +236,7 @@ namespace ITprosjekt
 
             MySqlCommand cmdID = dbconn.CreateCommand();
             MySqlDataReader ReaderID;
-            cmdID.CommandText = "select bondeID from login where bondeID = 8";
+            cmdID.CommandText = "select bondeID from login where bondeID = '" + bondeID + "'";
             dbconn.Open();
             ReaderID = cmdID.ExecuteReader();
             ReaderID.Read();

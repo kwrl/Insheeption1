@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -26,7 +21,7 @@ namespace ITprosjekt
         private BindingSource bindingSource;
         private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
 
-        public void fillDataGridViewMapSearch(DataGridView dgvSauer, String strSearchName)
+        public void fillDataGridViewMapSearch(DataGridView dgvSauer, String strSearchName, String strFlokkID)
         {
         
             dbcMySql = new MySqlConnection(myconnectionstring);
@@ -34,7 +29,7 @@ namespace ITprosjekt
 
             string strQuery = "";
 
-            strQuery = "SELECT * FROM Sauer WHERE navn LIKE '%" + strSearchName + "%' OR sauID LIKE '%"+strSearchName+"%'";
+            strQuery = "SELECT * FROM Sauer WHERE flokkID='"+strFlokkID+"' AND (navn LIKE '%" + strSearchName + "%' OR sauID LIKE '%" + strSearchName + "%')";
 
             sqlAdapter = new MySqlDataAdapter(strQuery, dbcMySql);
             sqlCommandBuilder = new MySqlCommandBuilder(sqlAdapter);

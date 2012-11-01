@@ -3,6 +3,7 @@ using System.Data;
 using GUIClient;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using ITprosjekt;
 
 namespace WindowsFormsApplication1
 {
@@ -21,6 +22,7 @@ namespace WindowsFormsApplication1
         private DataTable dataTable;
         private BindingSource bindingSource;
         private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        public string loggedInEmail;
         
 
         public Form3()
@@ -41,8 +43,7 @@ namespace WindowsFormsApplication1
             String strEmail = txbEmail.Text.ToString().Trim();
             String strPassword = txbPassword.Text.ToString().Trim();
 
-
-            //md5-kryptering
+            //md5-kryptering av passord
             System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
             byte[] bs = System.Text.Encoding.UTF8.GetBytes(strPassword);
             bs = x.ComputeHash(bs);
@@ -51,38 +52,41 @@ namespace WindowsFormsApplication1
             {
                 s.Append(b.ToString("x2").ToLower());
             }
-            String password = s.ToString();
-
-            GUIClient.ServiceReference1.SheepServiceClient client = new GUIClient.ServiceReference1.SheepServiceClient();
-
-            bool login= client.NormalLogin(strEmail, strPassword);
-            lblForgotPassword.Text = Convert.ToString(login);
-
-            // lblForgotPassword.Text = password;
+            String strMd5Password= s.ToString();
+            
             /*
+            GUIClient.ServiceReference.SheepServiceClient klient = new GUIClient.ServiceReference.SheepServiceClient();
+            Boolean sdf = klient.NormalLogin(strEmail, strPassword);
+
+            MessageBox.Show(Convert.ToString(sdf));
+            */
+
+            
+
             dbcMySql = new MySqlConnection(myconnectionstring);
             dbcMySql.Open();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = string.Format("SELECT bondeID FROM login WHERE epost = '" + strEmail + "' AND passord='" + strPassword + "'"); ;
+            cmd.CommandText = string.Format("SELECT bondeID FROM login WHERE epost = '" + strEmail + "' AND passord='" + strMd5Password + "'"); ;
             cmd.Connection = dbcMySql;
             MySqlDataReader reader = cmd.ExecuteReader();
-            String res = "";
+            String bondeID = "";
 
             while (reader.Read())
             {
-                res = reader.GetString(0);
+                bondeID = reader.GetString(0);
             }
-            */
 
-            //dbcMySql.Close();
 
-            if (login == true)
+            if (bondeID != "")
             {
                 
                 // lblForgotPassword.Text = res;
-                /*
+                
                 if (cbxRememberMe.Checked == true)
                 {
+
+                    
+                    
                     dbcMySql = new MySqlConnection(myconnectionstring);
                     dbcMySql.Open();
                     MySqlCommand cmd2 = new MySqlCommand();
@@ -91,13 +95,15 @@ namespace WindowsFormsApplication1
                     cmd2.ExecuteReader();
                     dbcMySql.Close();
                 }
-                */
-                /*
-                Form1 f = new Form1();
+
+               
+                //Sender med bondeID til klient. Mønsteret chain of responsibility benyttes fordi bondeID
+                //brukes overalt i klienten, og denne formen vet ikke hvor signalet ender opp.
+                Form1 f = new Form1(bondeID);
                 this.Hide();
                 f.Show();
-                */
-                //lblForgotPassword.Text = Convert.ToString(login);
+                
+               
             }
             else
             {
@@ -108,6 +114,7 @@ namespace WindowsFormsApplication1
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
+            // Kanskje en litt for simpel epost-validator - men det er kanskje ikke noen prioritet
             if (txbEmail.Text == "" || !txbEmail.Text.Contains("@") || !txbEmail.Text.Contains("."))
             {
                 MessageBox.Show("Tast inn en gyldig epostaddresse");

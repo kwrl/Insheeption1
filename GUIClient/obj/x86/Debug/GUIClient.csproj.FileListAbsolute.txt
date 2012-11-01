@@ -40,3 +40,4 @@ C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\GUIClient.ex
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\GUIClient.pdb
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\MySql.Data.dll
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\MySql.Data.Entity.dll
+C:\Users\rikardbe\Documents\GitHub\Insheeption1\GUIClient\bin\Debug\MySql.Web.dll

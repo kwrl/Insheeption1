@@ -71,14 +71,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabKart = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
             this.btnShowSheepPos = new System.Windows.Forms.Button();
             this.tabInstillinger = new System.Windows.Forms.TabPage();
             this.textBoxID = new System.Windows.Forms.TextBox();
@@ -415,15 +408,15 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Text = "Logg ut";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Avslutt";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // sdlfkjdsfToolStripMenuItem
@@ -449,7 +442,7 @@
             this.dgvSauer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSauer.Location = new System.Drawing.Point(6, 48);
             this.dgvSauer.Name = "dgvSauer";
-            this.dgvSauer.Size = new System.Drawing.Size(426, 470);
+            this.dgvSauer.Size = new System.Drawing.Size(448, 536);
             this.dgvSauer.TabIndex = 2;
             this.dgvSauer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSauer_CellContentClick);
             // 
@@ -458,13 +451,13 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(438, 6);
+            this.webBrowser1.Location = new System.Drawing.Point(460, 6);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(731, 629);
             this.webBrowser1.TabIndex = 3;
-            this.webBrowser1.Url = new System.Uri("http://folk.ntnu.no/kenneaas/sau/flokkID/index.php?flokkID=1", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // textSokSauKart
@@ -474,7 +467,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textSokSauKart.Location = new System.Drawing.Point(6, 22);
             this.textSokSauKart.Name = "textSokSauKart";
-            this.textSokSauKart.Size = new System.Drawing.Size(426, 20);
+            this.textSokSauKart.Size = new System.Drawing.Size(448, 20);
             this.textSokSauKart.TabIndex = 4;
             this.textSokSauKart.TextChanged += new System.EventHandler(this.textSokSauKart_TextChanged);
             // 
@@ -504,14 +497,7 @@
             // 
             // tabKart
             // 
-            this.tabKart.Controls.Add(this.button2);
             this.tabKart.Controls.Add(this.button1);
-            this.tabKart.Controls.Add(this.comboBox2);
-            this.tabKart.Controls.Add(this.dateTimePicker2);
-            this.tabKart.Controls.Add(this.label19);
-            this.tabKart.Controls.Add(this.comboBox1);
-            this.tabKart.Controls.Add(this.dateTimePicker1);
-            this.tabKart.Controls.Add(this.label18);
             this.tabKart.Controls.Add(this.btnShowSheepPos);
             this.tabKart.Controls.Add(this.webBrowser1);
             this.tabKart.Controls.Add(this.label1);
@@ -522,92 +508,27 @@
             this.tabKart.Padding = new System.Windows.Forms.Padding(3);
             this.tabKart.Size = new System.Drawing.Size(1175, 657);
             this.tabKart.TabIndex = 0;
-            this.tabKart.Text = "Kart";
+            this.tabKart.Text = " Kart";
             this.tabKart.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 590);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 43);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Vis uke";
-            this.button2.UseVisualStyleBackColor = true;
+            this.tabKart.Click += new System.EventHandler(this.tabKart_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(302, 590);
+            this.button1.Location = new System.Drawing.Point(282, 590);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 43);
+            this.button1.Size = new System.Drawing.Size(172, 43);
             this.button1.TabIndex = 13;
-            this.button1.Text = "Vis valgt tid";
+            this.button1.Text = "Vis alle sauer";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "09.00",
-            "15.00",
-            "21.00"});
-            this.comboBox2.Location = new System.Drawing.Point(234, 563);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 12;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(232, 537);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 11;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(212, 540);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(16, 13);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "->";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "09.00",
-            "15.00",
-            "21.00"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 563);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 537);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 8;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 521);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(107, 13);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "Velg posisjon mellom:";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnShowSheepPos
             // 
-            this.btnShowSheepPos.Location = new System.Drawing.Point(142, 590);
+            this.btnShowSheepPos.Location = new System.Drawing.Point(6, 590);
             this.btnShowSheepPos.Name = "btnShowSheepPos";
-            this.btnShowSheepPos.Size = new System.Drawing.Size(130, 43);
+            this.btnShowSheepPos.Size = new System.Drawing.Size(172, 43);
             this.btnShowSheepPos.TabIndex = 6;
-            this.btnShowSheepPos.Text = "Vis i dag";
+            this.btnShowSheepPos.Text = "Vis ruten til sauene";
             this.btnShowSheepPos.UseVisualStyleBackColor = true;
             this.btnShowSheepPos.Click += new System.EventHandler(this.btnShowSheepPos_Click);
             // 
@@ -889,13 +810,6 @@
         private System.Windows.Forms.DataGridView dgwSearchSheep;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
 }
