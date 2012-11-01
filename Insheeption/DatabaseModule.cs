@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Linq;
+using System.Web;
+
+
 
 namespace Insheeption
 {
@@ -12,6 +16,7 @@ namespace Insheeption
         private readonly MySqlConnection connection;
         private MySqlCommand command;
         private MySqlDataReader reader;
+        private IT1901Entities1 dbObjects;
 
         public DatabaseModule(AlarmModule alarmModule, string server, string database, string uid, string password)
         {
@@ -45,34 +50,25 @@ namespace Insheeption
             return flokk;
         }
 
-        // Hva skal vi med start- og stopTime her?
-
         public int GetFlockIDbySheepID(int sheepID)
         {
-            int flockID = 0;
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT flokkID FROM Sauer WHERE sauID='" + sheepID + "';";
-            reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                IDataRecord record = reader;
-                flockID = int.Parse("" + record);
-            }
-            return flockID;
+            Sauer sau = dbObjects.Sauer.ElementAt(sheepID);
+            return sau.flokkID;
         }
 
         public Flock LoadFlockBySheepID(int sheepID, int farmerID, DateTime startTime, DateTime stopTime)
         {
             int flockID = GetFlockIDbySheepID(sheepID);
-            return LoadFlockByFlockID(flockID, farmerID, startTime, stopTime);
+
+            Saueflokk flokk = dbObjects.Saueflokk.ElementAt(flockID);
+            return null;
         }
 
         // TODO: Klassen som kaller på CreateNewUser må sjekke om epost og passord  er VARCHAR(50)
         public bool CreateNewUser(string epost, string password)
         {
             command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO login (epost, passord) VALUES ('" + epost + "','" + password + "')";
+            command.CommandText = "INSERT INTO login (epost, passord) VALUES ('" + epost + "','" + password + "');";
             reader = command.ExecuteReader();
             return true;
         }
@@ -83,7 +79,7 @@ namespace Insheeption
             command.CommandText = "SELECT BondeID FROM login WHERE epost='" + authentication.Username + "' && passord='" +
                                   authentication.Password + "';";
             reader = command.ExecuteReader();
-
+           
             while (reader.Read())
             {
                 IDataReader record = reader;
@@ -117,8 +113,15 @@ namespace Insheeption
 
         public List<int> LoadAllSheepIDs(int flockID)
         {
-            IT1901Entities1 db = new IT1901Entities1();
-            List<int> sheepIDs = db.Sauer.Create<int>();
+            var sheepIDs = new List<int>();
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT SauID FROM Sauer WHERE flokkID='" + flockID + "';";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                IDataRecord record = reader;
+                sheepIDs.Add(int.Parse("" + record[0]));
+            }
             return sheepIDs;
         }
 
@@ -127,7 +130,7 @@ namespace Insheeption
         {
             var sheepIDs = new List<int>();
             command = connection.CreateCommand();
-            command.CommandText = "SELECT SauID FROM Sauer";
+            command.CommandText = "SELECT SauID FROM Sauer;";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -178,7 +181,7 @@ namespace Insheeption
         public List<Position> LoadPositionLog(int sheepID, DateTime startTime, DateTime stopTime)
         {
             command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Posisjon WHERE tid ";
+            command.CommandText = "SELECT * FROM Posisjon WHERE tid;";
             throw new NotImplementedException();
         }
 

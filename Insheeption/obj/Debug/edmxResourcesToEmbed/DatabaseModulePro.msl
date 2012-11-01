@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IT1901ModelStoreContainer" CdmEntityContainer="IT1901Entities1">
+    <EntitySetMapping Name="Bonde">
+      <EntityTypeMapping TypeName="IT1901Model.Bonde">
+        <MappingFragment StoreEntitySet="Bonde">
+          <ScalarProperty Name="bondeID" ColumnName="bondeID" />
+          <ScalarProperty Name="bondelagID" ColumnName="bondelagID" />
+          <ScalarProperty Name="navn" ColumnName="navn" />
+          <ScalarProperty Name="etternavn" ColumnName="etternavn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bondelag">
+      <EntityTypeMapping TypeName="IT1901Model.Bondelag">
+        <MappingFragment StoreEntitySet="Bondelag">
+          <ScalarProperty Name="bondelagID" ColumnName="bondelagID" />
+          <ScalarProperty Name="kommuneID" ColumnName="kommuneID" />
+          <ScalarProperty Name="navn" ColumnName="navn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Helse">
+      <EntityTypeMapping TypeName="IT1901Model.Helse">
+        <MappingFragment StoreEntitySet="Helse">
+          <ScalarProperty Name="sauID" ColumnName="sauID" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="hjerteslag" ColumnName="hjerteslag" />
+          <ScalarProperty Name="temperatur" ColumnName="temperatur" />
+          <ScalarProperty Name="alarm" ColumnName="alarm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kommune">
+      <EntityTypeMapping TypeName="IT1901Model.Kommune">
+        <MappingFragment StoreEntitySet="Kommune">
+          <ScalarProperty Name="kommuneID" ColumnName="kommuneID" />
+          <ScalarProperty Name="kommunenavn" ColumnName="kommunenavn" />
+          <ScalarProperty Name="nummer" ColumnName="nummer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontakt">
+      <EntityTypeMapping TypeName="IT1901Model.Kontakt">
+        <MappingFragment StoreEntitySet="Kontakt">
+          <ScalarProperty Name="bondeID" ColumnName="bondeID" />
+          <ScalarProperty Name="kommuneID" ColumnName="kommuneID" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="telefonnr" ColumnName="telefonnr" />
+          <ScalarProperty Name="skriftstorrelse" ColumnName="skriftstorrelse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="login">
+      <EntityTypeMapping TypeName="IT1901Model.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="bondeID" ColumnName="bondeID" />
+          <ScalarProperty Name="epost" ColumnName="epost" />
+          <ScalarProperty Name="passord" ColumnName="passord" />
+          <ScalarProperty Name="huskmeg" ColumnName="huskmeg" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posisjon">
+      <EntityTypeMapping TypeName="IT1901Model.Posisjon">
+        <MappingFragment StoreEntitySet="Posisjon">
+          <ScalarProperty Name="sauID" ColumnName="sauID" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="flokkID" ColumnName="flokkID" />
+          <ScalarProperty Name="breddegrad" ColumnName="breddegrad" />
+          <ScalarProperty Name="lengdegrad" ColumnName="lengdegrad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saueflokk">
+      <EntityTypeMapping TypeName="IT1901Model.Saueflokk">
+        <MappingFragment StoreEntitySet="Saueflokk">
+          <ScalarProperty Name="flokkID" ColumnName="flokkID" />
+          <ScalarProperty Name="bondeID" ColumnName="bondeID" />
+          <ScalarProperty Name="antall" ColumnName="antall" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sauer">
+      <EntityTypeMapping TypeName="IT1901Model.Sauer">
+        <MappingFragment StoreEntitySet="Sauer">
+          <ScalarProperty Name="sauID" ColumnName="sauID" />
+          <ScalarProperty Name="flokkID" ColumnName="flokkID" />
+          <ScalarProperty Name="navn" ColumnName="navn" />
+          <ScalarProperty Name="fodselsdato" ColumnName="fodselsdato" />
+          <ScalarProperty Name="notat" ColumnName="notat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,3 +1,5 @@
 <Modules>
   <Module PersistentId="3E6CEBD6-4018-44A6-A56D-3583FFBB85D7" ModuleId="Insheeption" />
+  <Module PersistentId="2A52C938-BF50-4AC0-8D2D-184C0EF80B5E" ModuleId="test" />
+  <Module PersistentId="859B5ECD-C8EC-4976-9600-67276F079C83" ModuleId="GUIClient" />
 </Modules>

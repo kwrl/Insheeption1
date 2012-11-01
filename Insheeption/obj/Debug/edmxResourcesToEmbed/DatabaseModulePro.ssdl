@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IT1901Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="IT1901ModelStoreContainer">
+    <EntitySet Name="Bonde" EntityType="IT1901Model.Store.Bonde" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Bondelag" EntityType="IT1901Model.Store.Bondelag" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Helse" EntityType="IT1901Model.Store.Helse" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Kommune" EntityType="IT1901Model.Store.Kommune" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Kontakt" EntityType="IT1901Model.Store.Kontakt" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="login" EntityType="IT1901Model.Store.login" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Posisjon" EntityType="IT1901Model.Store.Posisjon" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Saueflokk" EntityType="IT1901Model.Store.Saueflokk" store:Type="Tables" Schema="IT1901" />
+    <EntitySet Name="Sauer" EntityType="IT1901Model.Store.Sauer" store:Type="Tables" Schema="IT1901" />
+    <AssociationSet Name="bondeID_Kontakt" Association="IT1901Model.Store.bondeID_Kontakt">
+      <End Role="Bonde" EntitySet="Bonde" />
+      <End Role="Kontakt" EntitySet="Kontakt" />
+    </AssociationSet>
+    <AssociationSet Name="bondeID_login" Association="IT1901Model.Store.bondeID_login">
+      <End Role="Bonde" EntitySet="Bonde" />
+      <End Role="login" EntitySet="login" />
+    </AssociationSet>
+    <AssociationSet Name="bondeID_Saueflokk" Association="IT1901Model.Store.bondeID_Saueflokk">
+      <End Role="Bonde" EntitySet="Bonde" />
+      <End Role="Saueflokk" EntitySet="Saueflokk" />
+    </AssociationSet>
+    <AssociationSet Name="bondelagID_Bonde" Association="IT1901Model.Store.bondelagID_Bonde">
+      <End Role="Bondelag" EntitySet="Bondelag" />
+      <End Role="Bonde" EntitySet="Bonde" />
+    </AssociationSet>
+    <AssociationSet Name="flokkID_Sauer" Association="IT1901Model.Store.flokkID_Sauer">
+      <End Role="Saueflokk" EntitySet="Saueflokk" />
+      <End Role="Sauer" EntitySet="Sauer" />
+    </AssociationSet>
+    <AssociationSet Name="kommuneID_Bondelag" Association="IT1901Model.Store.kommuneID_Bondelag">
+      <End Role="Kommune" EntitySet="Kommune" />
+      <End Role="Bondelag" EntitySet="Bondelag" />
+    </AssociationSet>
+    <AssociationSet Name="kommuneID_Kontakt" Association="IT1901Model.Store.kommuneID_Kontakt">
+      <End Role="Kommune" EntitySet="Kommune" />
+      <End Role="Kontakt" EntitySet="Kontakt" />
+    </AssociationSet>
+    <AssociationSet Name="sauID_Helse" Association="IT1901Model.Store.sauID_Helse">
+      <End Role="Sauer" EntitySet="Sauer" />
+      <End Role="Helse" EntitySet="Helse" />
+    </AssociationSet>
+    <AssociationSet Name="sauID_Posisjon" Association="IT1901Model.Store.sauID_Posisjon">
+      <End Role="Sauer" EntitySet="Sauer" />
+      <End Role="Posisjon" EntitySet="Posisjon" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bonde">
+    <Key>
+      <PropertyRef Name="bondeID" />
+    </Key>
+    <Property Name="bondeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bondelagID" Type="int" Nullable="false" />
+    <Property Name="navn" Type="varchar" MaxLength="50" />
+    <Property Name="etternavn" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Bondelag">
+    <Key>
+      <PropertyRef Name="bondelagID" />
+    </Key>
+    <Property Name="bondelagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="kommuneID" Type="int" Nullable="false" />
+    <Property Name="navn" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Helse">
+    <Key>
+      <PropertyRef Name="sauID" />
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="sauID" Type="int" Nullable="false" />
+    <Property Name="tid" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="hjerteslag" Type="int" />
+    <Property Name="temperatur" Type="float" />
+    <Property Name="alarm" Type="bool" />
+  </EntityType>
+  <EntityType Name="Kommune">
+    <Key>
+      <PropertyRef Name="kommuneID" />
+    </Key>
+    <Property Name="kommuneID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="kommunenavn" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="nummer" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kontakt">
+    <Key>
+      <PropertyRef Name="bondeID" />
+    </Key>
+    <Property Name="bondeID" Type="int" Nullable="false" />
+    <Property Name="kommuneID" Type="int" Nullable="false" />
+    <Property Name="adresse" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="telefonnr" Type="int" Nullable="false" />
+    <Property Name="skriftstorrelse" Type="int" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="bondeID" />
+    </Key>
+    <Property Name="bondeID" Type="int" Nullable="false" />
+    <Property Name="epost" Type="varchar" MaxLength="50" />
+    <Property Name="passord" Type="varchar" MaxLength="50" />
+    <Property Name="huskmeg" Type="int" />
+    <Property Name="admin" Type="int" />
+  </EntityType>
+  <EntityType Name="Posisjon">
+    <Key>
+      <PropertyRef Name="sauID" />
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="sauID" Type="int" Nullable="false" />
+    <Property Name="tid" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="flokkID" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="breddegrad" Type="varchar" MaxLength="255" />
+    <Property Name="lengdegrad" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Saueflokk">
+    <Key>
+      <PropertyRef Name="flokkID" />
+    </Key>
+    <Property Name="flokkID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bondeID" Type="int" Nullable="false" />
+    <Property Name="antall" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sauer">
+    <Key>
+      <PropertyRef Name="sauID" />
+    </Key>
+    <Property Name="sauID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="flokkID" Type="int" Nullable="false" />
+    <Property Name="navn" Type="varchar" MaxLength="50" />
+    <Property Name="fodselsdato" Type="year" />
+    <Property Name="notat" Type="text" />
+  </EntityType>
+  <Association Name="bondeID_Kontakt">
+    <End Role="Bonde" Type="IT1901Model.Store.Bonde" Multiplicity="1" />
+    <End Role="Kontakt" Type="IT1901Model.Store.Kontakt" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Bonde">
+        <PropertyRef Name="bondeID" />
+      </Principal>
+      <Dependent Role="Kontakt">
+        <PropertyRef Name="bondeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bondeID_login">
+    <End Role="Bonde" Type="IT1901Model.Store.Bonde" Multiplicity="1" />
+    <End Role="login" Type="IT1901Model.Store.login" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Bonde">
+        <PropertyRef Name="bondeID" />
+      </Principal>
+      <Dependent Role="login">
+        <PropertyRef Name="bondeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bondeID_Saueflokk">
+    <End Role="Bonde" Type="IT1901Model.Store.Bonde" Multiplicity="1" />
+    <End Role="Saueflokk" Type="IT1901Model.Store.Saueflokk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bonde">
+        <PropertyRef Name="bondeID" />
+      </Principal>
+      <Dependent Role="Saueflokk">
+        <PropertyRef Name="bondeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bondelagID_Bonde">
+    <End Role="Bondelag" Type="IT1901Model.Store.Bondelag" Multiplicity="1" />
+    <End Role="Bonde" Type="IT1901Model.Store.Bonde" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bondelag">
+        <PropertyRef Name="bondelagID" />
+      </Principal>
+      <Dependent Role="Bonde">
+        <PropertyRef Name="bondelagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="flokkID_Sauer">
+    <End Role="Saueflokk" Type="IT1901Model.Store.Saueflokk" Multiplicity="1" />
+    <End Role="Sauer" Type="IT1901Model.Store.Sauer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saueflokk">
+        <PropertyRef Name="flokkID" />
+      </Principal>
+      <Dependent Role="Sauer">
+        <PropertyRef Name="flokkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kommuneID_Bondelag">
+    <End Role="Kommune" Type="IT1901Model.Store.Kommune" Multiplicity="1" />
+    <End Role="Bondelag" Type="IT1901Model.Store.Bondelag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kommune">
+        <PropertyRef Name="kommuneID" />
+      </Principal>
+      <Dependent Role="Bondelag">
+        <PropertyRef Name="kommuneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kommuneID_Kontakt">
+    <End Role="Kommune" Type="IT1901Model.Store.Kommune" Multiplicity="1" />
+    <End Role="Kontakt" Type="IT1901Model.Store.Kontakt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kommune">
+        <PropertyRef Name="kommuneID" />
+      </Principal>
+      <Dependent Role="Kontakt">
+        <PropertyRef Name="kommuneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sauID_Helse">
+    <End Role="Sauer" Type="IT1901Model.Store.Sauer" Multiplicity="1" />
+    <End Role="Helse" Type="IT1901Model.Store.Helse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sauer">
+        <PropertyRef Name="sauID" />
+      </Principal>
+      <Dependent Role="Helse">
+        <PropertyRef Name="sauID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sauID_Posisjon">
+    <End Role="Sauer" Type="IT1901Model.Store.Sauer" Multiplicity="1" />
+    <End Role="Posisjon" Type="IT1901Model.Store.Posisjon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sauer">
+        <PropertyRef Name="sauID" />
+      </Principal>
+      <Dependent Role="Posisjon">
+        <PropertyRef Name="sauID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
