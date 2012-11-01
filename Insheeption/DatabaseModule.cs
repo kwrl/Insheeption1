@@ -111,21 +111,14 @@ namespace Insheeption
                 flockIDs.Add(int.Parse("" + record[0]));
             }
 
-            reader.Close();
+            reader.Close(); 
             return flockIDs;
         }
 
         public List<int> LoadAllSheepIDs(int flockID)
         {
-            var sheepIDs = new List<int>();
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT SauID FROM Sauer WHERE FlokkID='" + flockID + "'";
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                IDataRecord record = reader;
-                sheepIDs.Add(int.Parse("" + record[0]));
-            }
+            IT1901Entities1 db = new IT1901Entities1();
+            List<int> sheepIDs = db.Sauer.Create<int>();
             return sheepIDs;
         }
 
@@ -199,7 +192,7 @@ namespace Insheeption
             throw new NotImplementedException();
         }
 
-        public void StorePosition(int sheepID, Position position)
+        public void StorePosition(int sheepID, DateTime tid, Position standardPos)
         {
             throw new NotImplementedException();
         }

@@ -95,7 +95,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlarmModule.cs" />
+    <Compile Include="Bonde.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bondelag.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModule.cs" />
+    <Compile Include="DatabaseModulePro.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModulePro.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModulePro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModulePro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModulePro.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Helse.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kommune.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kontakt.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Posisjon.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Saueflokk.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sauer.cs">
+      <DependentUpon>DatabaseModulePro.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +156,23 @@
   <ItemGroup>
     <Content Include="Service References\ServiceReference1\SheepService.wsdl" />
     <Content Include="packages.config" />
+    <EntityDeploy Include="DatabaseModulePro.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseModulePro.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DatabaseModulePro.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModulePro.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModulePro.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DatabaseModulePro.edmx.diagram">
+      <DependentUpon>DatabaseModulePro.edmx</DependentUpon>
+    </Content>
+    <Content Include="DatabaseModulePro.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModulePro.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModulePro.cs</LastGenOutput>
+    </Content>
     <None Include="Service References\ServiceReference1\SheepService.xsd">
       <SubType>Designer</SubType>
     </None>

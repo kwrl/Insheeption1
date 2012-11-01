@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="43de33d8bf754c3d81a4886a1f5f1e85" Name="Diagram1">
+        <EntityTypeShape EntityType="IT1901Model.Bonde" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Bondelag" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Helse" Width="1.5" PointX="12" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Kommune" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Kontakt" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.login" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Posisjon" Width="1.5" PointX="12" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Saueflokk" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IT1901Model.Sauer" Width="1.5" PointX="9.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="IT1901Model.bondeID_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.bondeID_login" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.bondeID_Saueflokk" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.bondelagID_Bonde" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.kommuneID_Bondelag" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.sauID_Helse" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.kommuneID_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.sauID_Posisjon" ManuallyRouted="false" />
+        <AssociationConnector Association="IT1901Model.flokkID_Sauer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -13,4 +13,3 @@ C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.dl
 C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.pdb
 C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.dll
 C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\Insheeption.pdb
-C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.csprojResolveAssemblyReference.cache
