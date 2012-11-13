@@ -20,3 +20,5 @@ C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\EntityFramework.
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\bin\EntityFramework.xml
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.dll
 C:\Users\rikardbe\Documents\GitHub\Insheeption1\Insheeption\obj\Debug\Insheeption.pdb
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\EntityFramework.dll
+C:\Users\LPC7\Documents\GitHub\Insheeption1\Insheeption\bin\EntityFramework.xml

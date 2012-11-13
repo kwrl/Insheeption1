@@ -25,9 +25,9 @@ namespace ITprosjekt
         private MySqlCommandBuilder sqlCommandBuilder;
         private DataTable dataTable;
         private BindingSource bindingSource;
-        private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        private String myconnectionstring = "Server=80.202.107.226;Database=IT1901;User=root;Password=herp";
 
-        public void getinfosau(TextBox textBoxSauID, TextBox textBoxFlokkID, TextBox textBoxNavn, TextBox textBoxFdato, TextBox textBoxNotat, String strSelectedId)
+        public void getinfosau(TextBox textBoxSauID, TextBox textBoxFlokkID, TextBox textBoxNavn, TextBox textBoxFdato, TextBox textBoxNotat, String strSelectedId, Label lblHjerteslag, Label lblTemperatur)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
@@ -85,6 +85,26 @@ namespace ITprosjekt
                     ReaderNotat.Read();
                     textBoxNotat.Text = ReaderNotat.GetValue(0).ToString();
                     dbconn.Close();
+
+                    MySqlCommand cmdHjerteslag = dbconn.CreateCommand();
+                    MySqlDataReader ReaderHjerteslag;
+                    cmdHjerteslag.CommandText = "select hjerteslag from Helse where sauID ='" + strSearchWord + "' ORDER BY tid DESC";
+                    dbconn.Open();
+                    ReaderHjerteslag = cmdHjerteslag.ExecuteReader();
+                    ReaderHjerteslag.Read();
+                    lblHjerteslag.Text = ReaderHjerteslag.GetValue(0).ToString();
+                    dbconn.Close();
+
+                    MySqlCommand cmdTemperatur = dbconn.CreateCommand();
+                    MySqlDataReader ReaderTemperatur;
+                    cmdTemperatur.CommandText = "select temperatur from Helse where sauID ='" + strSearchWord + "' ORDER BY tid DESC";
+                    dbconn.Open();
+                    ReaderTemperatur = cmdTemperatur.ExecuteReader();
+                    ReaderTemperatur.Read();
+                    lblTemperatur.Text = ReaderTemperatur.GetValue(0).ToString();
+                    dbconn.Close();
+
+
                 } catch(Exception e){
                     
                 }
@@ -121,7 +141,7 @@ namespace ITprosjekt
 
         }
 
-        public void alterSheep(TextBox textBoxFlokkID, TextBox textBoxNavn, TextBox textBoxNotat, TextBox textBoxSauID)
+        public void alterSheep(TextBox textBoxFlokkID, TextBox textBoxNavn, TextBox textBoxNotat, TextBox textBoxSauID, DataGridView dgwSearchSheep)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
@@ -133,6 +153,31 @@ namespace ITprosjekt
             dbconn.Close();
 
             MessageBox.Show("Sau Endret");
+
+            fillDataGridSearchSheep(dgwSearchSheep, textBoxFlokkID.Text);
+        }
+        public void deleteSheep(TextBox textBoxFlokkID, TextBox textBoxNavn, TextBox textBoxNotat, TextBox textBoxSauID, DataGridView dgwSearchSheep)
+        {
+            String dbconnect = myconnectionstring;
+            MySqlConnection dbconn = new MySqlConnection(dbconnect);
+
+            MySqlCommand cmd2 = dbconn.CreateCommand();
+            cmd2.CommandText = "DELETE FROM Posisjon WHERE sauID= '" + textBoxSauID.Text + "'";
+            dbconn.Open();
+            cmd2.ExecuteNonQuery();
+            dbconn.Close();
+
+            MySqlCommand cmd = dbconn.CreateCommand();
+            cmd.CommandText = "DELETE FROM Posisjon WHERE sauID= '" + textBoxSauID.Text + "'";
+            cmd.CommandText = "DELETE FROM Sauer WHERE flokkID='" + textBoxFlokkID.Text + "' AND sauID= '" + textBoxSauID.Text + "'";
+            dbconn.Open();
+            cmd.ExecuteNonQuery();
+            dbconn.Close();
+
+            MessageBox.Show("Sau Slettet");
+
+            fillDataGridSearchSheep(dgwSearchSheep, textBoxFlokkID.Text);
+            
         }
 
         public void alterUser(TextBox textBoxGammelPassord, TextBox textBoxEpost, TextBox textBoxNyPassord, TextBox textBoxAdresse, TextBox textBoxTelefon, TextBox textBoxID, String bondeID)
@@ -244,7 +289,7 @@ namespace ITprosjekt
             dbconn.Close();
         }
 
-        internal void addSheep(TextBox textBoxNyFlokkID, TextBox textBoxNyNavn, TextBox textBoxNyFdato, TextBox textBoxNyNotat)
+        internal void addSheep(TextBox textBoxNyFlokkID, TextBox textBoxNyNavn, TextBox textBoxNyFdato, TextBox textBoxNyNotat, DataGridView dgwSearchSheep, String strFlokkID)
         {
             String dbconnect = myconnectionstring;
             MySqlConnection dbconn = new MySqlConnection(dbconnect);
@@ -256,6 +301,8 @@ namespace ITprosjekt
             dbconn.Close();
 
             MessageBox.Show("Sau lagt til");
+
+            fillDataGridSearchSheep(dgwSearchSheep, strFlokkID);
         }
 
         internal void fillDataGridSearchSheep(ListBox dgwSearchSheep)

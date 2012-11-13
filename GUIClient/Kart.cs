@@ -19,7 +19,7 @@ namespace ITprosjekt
         private MySqlCommandBuilder sqlCommandBuilder;
         private DataTable dataTable;
         private BindingSource bindingSource;
-        private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        private String myconnectionstring = "Server=80.202.107.226;Database=IT1901;User=root;Password=herp";
 
         public void fillDataGridViewMapSearch(DataGridView dgvSauer, String strSearchName, String strFlokkID)
         {

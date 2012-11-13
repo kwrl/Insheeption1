@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1
         private BindingSource bindingSource;
         private string bondeID;
         private String strFlokkID;
-        String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        String myconnectionstring = "Server=80.202.107.226;Database=IT1901;User=root;Password=herp";
 
 
         public Form1(string bondeID)
@@ -44,12 +44,31 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            //Kjører metoden som presenterer ruten til de fire første sauene i databasen.
-            //Dette antallet brukes for å ikke skape et for kaotisk kart.
-            presentFourSheeps();
+
+
+
             
+
             //Henter brukernavn til den innloggede brukeren
             String strBrukerLoggedIn = getBrukerNavn();
+
+            String dbconnect = myconnectionstring;
+            MySqlConnection dbconn = new MySqlConnection(dbconnect);
+
+
+            MySqlCommand cmdSauID = dbconn.CreateCommand();
+            MySqlDataReader ReaderSauID;
+            cmdSauID.CommandText = "select skriftstorrelse from Kontakt where bondeID = '" + bondeID + "'";
+            dbconn.Open();
+            ReaderSauID = cmdSauID.ExecuteReader();
+            ReaderSauID.Read();
+            String strTextsize = ReaderSauID.GetValue(0).ToString();
+            dbconn.Close();
+
+            int textSize = Convert.ToInt32(strTextsize);
+
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", textSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                
 
             //Setter tittel
             this.Text = "SheepTracker - " + strBrukerLoggedIn + " innlogget";
@@ -61,6 +80,13 @@ namespace WindowsFormsApplication1
             
             //Henter flokkid
             strFlokkID = getFlokkID();
+
+            textBoxNyFlokkID.Text = strFlokkID;
+
+            //Kjører metoden som presenterer ruten til de fire første sauene i databasen.
+            //Dette antallet brukes for å ikke skape et for kaotisk kart.
+            presentFourSheeps();
+            presentStatistics();
 
             //Gjennomfører logikk i henhold til å fylle grids med sauer
             kart.fillDataGridViewMapSearch(dgvSauer, "", strFlokkID);
@@ -180,7 +206,7 @@ namespace WindowsFormsApplication1
         private void buttonSoksau_Click(object sender, EventArgs e)
         {
             String strSelectedCell = textSokSauInstillinger.Text;
-            oversikt.getinfosau(textBoxSauID, textBoxFlokkID, textBoxNavn, textBoxFdato, textBoxNotat, strSelectedCell);
+            oversikt.getinfosau(textBoxSauID, textBoxFlokkID, textBoxNavn, textBoxFdato, textBoxNotat, strSelectedCell, lblHjerteslag, lblTemperatur);
 
         }
 
@@ -194,7 +220,10 @@ namespace WindowsFormsApplication1
 
         private void buttonLeggTilNySau_Click(object sender, EventArgs e)
         {
-            oversikt.addSheep(textBoxNyFlokkID, textBoxNyNavn, textBoxNyFdato, textBoxNyNotat);
+
+            oversikt.addSheep(textBoxNyFlokkID, textBoxNyNavn, textBoxNyFdato, textBoxNyNotat, dgwSearchSheep, strFlokkID);
+
+            presentStatistics();
         }
 
         private void tabOversikt_Click(object sender, EventArgs e)
@@ -204,7 +233,8 @@ namespace WindowsFormsApplication1
 
         private void btnShowSheepPos_Click(object sender, EventArgs e)
         {
-
+            dgvSauer.Visible = true;
+            dataGridView1.Visible = false;
             presentFourSheeps();
 
             
@@ -237,15 +267,15 @@ namespace WindowsFormsApplication1
             }
 
             dbcMySql.Close();
+            webBrowser1.ScriptErrorsSuppressed = true;
             //MessageBox.Show(IDs[2]);
             //String strSelectedIdToMap = dgvSauer.Rows[e.RowIndex].Cells[0].Value.ToString();
-            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/flerID/index.php?id1=" + IDs[1] + "&id2=" + IDs[2] + "&id3=" + IDs[3] + "&id4=" + IDs[4] + ""); 
-     
-        }
+            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/flerID/index.php?id1=" + IDs[1] + "&id2=" + IDs[2] + "&id3=" + IDs[3] + "&id4=" + IDs[4] + "");
+              }
 
         private void btnAlterSheep_Click(object sender, EventArgs e)
         {
-            oversikt.alterSheep(textBoxFlokkID, textBoxNavn, textBoxNotat, textBoxSauID);
+            oversikt.alterSheep(textBoxFlokkID, textBoxNavn, textBoxNotat, textBoxSauID, dgwSearchSheep);
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -259,6 +289,8 @@ namespace WindowsFormsApplication1
         {
             
            String strSelectedIdToMap = dgvSauer.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+           webBrowser1.ScriptErrorsSuppressed = true;
            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/sauID/index.php?sauID=" + strSelectedIdToMap); 
      
         }
@@ -267,7 +299,7 @@ namespace WindowsFormsApplication1
         {
             String strSelectedId = dgwSearchSheep.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            oversikt.getinfosau(textBoxSauID, textBoxFlokkID, textBoxNavn, textBoxFdato, textBoxNotat, strSelectedId);
+            oversikt.getinfosau(textBoxSauID, textBoxFlokkID, textBoxNavn, textBoxFdato, textBoxNotat, strSelectedId, lblHjerteslag, lblTemperatur);
 
         }
 
@@ -314,12 +346,186 @@ namespace WindowsFormsApplication1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            dgvSauer.Visible = true;
+            dataGridView1.Visible = false;
+            
 
-
+            webBrowser1.ScriptErrorsSuppressed = true;
             webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/flokkID/index.php?flokkID=1"); 
       
         }
 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void comboBoxTextsize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String dbconnect = "Server=80.202.107.22;Database=IT1901;User=root;Password=herp";
+            MySqlConnection dbconn = new MySqlConnection(dbconnect);
+
+            // Endre skriftstrørrelsen til programmet
+
+            int textsize = int.Parse(comboBoxTextsize.Text);
+            if (textsize > 4 && 16 > textsize)
+            {
+
+
+                dbcMySql = new MySqlConnection(myconnectionstring);
+                dbcMySql.Open();
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.CommandText = "UPDATE Kontakt SET skriftstorrelse='" + comboBoxTextsize.Text + "'WHERE bondeID= 8";
+                cmd2.Connection = dbcMySql;
+                MySqlDataReader reader = cmd2.ExecuteReader();
+
+                this.Font = new System.Drawing.Font("Microsoft Sans Serif", textsize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                //MessageBox.Show("Lagret");
+
+            }
+            else
+            {
+                //MessageBox.Show("Vennligst velg et tall mellom 5 og 15");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            oversikt.deleteSheep(textBoxFlokkID, textBoxNavn, textBoxNotat, textBoxSauID, dgwSearchSheep);
+            presentStatistics();
+
+            textBoxSauID.Text = "";
+            textBoxFlokkID.Text = "";
+            textBoxNavn.Text = "";
+            textBoxFdato.Text = "";
+            textBoxNotat.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            dgvSauer.Visible = false;
+            dataGridView1.Visible = true;
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/doedFlokkID/index.php?flokkID=" + strFlokkID+"");
+
+            dbcMySql = new MySqlConnection(myconnectionstring);
+            dbcMySql.Open();
+
+            string strQuery = "";
+
+            strQuery = "SELECT * FROM Doedsau WHERE flokkID='" + strFlokkID + "'";
+
+            sqlAdapter = new MySqlDataAdapter(strQuery, dbcMySql);
+            sqlCommandBuilder = new MySqlCommandBuilder(sqlAdapter);
+
+            sqlAdapter.UpdateCommand = sqlCommandBuilder.GetUpdateCommand();
+
+            dataTable = new DataTable();
+            sqlAdapter.Fill(dataTable);
+
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = dataTable;
+
+            dataGridView1.DataSource = bindingSource;
+
+            dbcMySql.Close();
+
+            dataGridView1.Columns["flokkID"].Visible = false;
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dgvSauer.Visible = false;
+            dataGridView1.Visible = true;
+            dbcMySql = new MySqlConnection(myconnectionstring);
+            dbcMySql.Open();
+
+            string strQuery = "";
+
+            strQuery = "SELECT * FROM Doedsau WHERE flokkID='" + strFlokkID + "'";
+
+            sqlAdapter = new MySqlDataAdapter(strQuery, dbcMySql);
+            sqlCommandBuilder = new MySqlCommandBuilder(sqlAdapter);
+
+            sqlAdapter.UpdateCommand = sqlCommandBuilder.GetUpdateCommand();
+
+            dataTable = new DataTable();
+            sqlAdapter.Fill(dataTable);
+
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = dataTable;
+
+            dataGridView1.DataSource = bindingSource;
+            
+            dbcMySql.Close();
+
+            dataGridView1.Columns["flokkID"].Visible = false;
+
+            MySqlConnection dbconn = new MySqlConnection(myconnectionstring);
+
+            MySqlCommand cmdSauID = dbconn.CreateCommand();
+            MySqlDataReader ReaderSauID;
+            cmdSauID.CommandText = "SELECT * FROM Sauer WHERE flokkID='" + strFlokkID + "'";
+            dbconn.Open();
+            ReaderSauID = cmdSauID.ExecuteReader();
+            ReaderSauID.Read();
+            String strSauID = ReaderSauID.GetValue(0).ToString();
+            dbconn.Close();
+
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/doedSauID/index.php?sauID=" + strSauID); 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String strSelectedIdToMap = dgvSauer.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate("http://folk.ntnu.no/kenneaas/sau/doedSauID/index.php?sauID=" + strSelectedIdToMap); 
+     
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dgvSauer.Visible = true;
+            dataGridView1.Visible = false;
+            
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void presentStatistics() {
+
+            MySqlConnection dbconn = new MySqlConnection(myconnectionstring);
+
+            MySqlCommand cmdFlokkID = dbconn.CreateCommand();
+            MySqlDataReader ReaderSauFlokk;
+            cmdFlokkID.CommandText = "SELECT COUNT(*) FROM Sauer WHERE flokkID='" +strFlokkID+"'";
+            dbconn.Open();
+            ReaderSauFlokk = cmdFlokkID.ExecuteReader();
+            ReaderSauFlokk.Read();
+            lblAntallSauer.Text = ReaderSauFlokk.GetValue(0).ToString();
+            dbconn.Close();
+
+            MySqlCommand cmdDodeSauer = dbconn.CreateCommand();
+            MySqlDataReader ReaderDodeSauer;
+            cmdDodeSauer.CommandText = "SELECT COUNT(*) FROM Doedsau WHERE flokkID='" + strFlokkID + "'";
+            dbconn.Open();
+            ReaderDodeSauer = cmdDodeSauer.ExecuteReader();
+            ReaderDodeSauer.Read();
+            lblDodeSauer.Text = ReaderDodeSauer.GetValue(0).ToString();
+            dbconn.Close();
+            
+            
+
+        }
 
     }
 }

@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         private MySqlCommandBuilder sqlCommandBuilder;
         private DataTable dataTable;
         private BindingSource bindingSource;
-        private String myconnectionstring = "Server=129.241.151.172;Database=IT1901;User=root;Password=herp";
+        private String myconnectionstring = "Server=80.202.107.226;Database=IT1901;User=root;Password=herp";
         public string loggedInEmail;
         
 
@@ -54,14 +54,12 @@ namespace WindowsFormsApplication1
             }
             String strMd5Password= s.ToString();
             
-            /*
+           /*
             GUIClient.ServiceReference.SheepServiceClient klient = new GUIClient.ServiceReference.SheepServiceClient();
             Boolean sdf = klient.NormalLogin(strEmail, strPassword);
 
             MessageBox.Show(Convert.ToString(sdf));
-            */
-
-            
+           */
 
             dbcMySql = new MySqlConnection(myconnectionstring);
             dbcMySql.Open();

@@ -30,6 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabPage tabOversikt;
+            this.lblDodeSauer = new System.Windows.Forms.Label();
+            this.lblAntallSauer = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblTemperatur = new System.Windows.Forms.Label();
+            this.lblHjerteslag = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.dgwSearchSheep = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.btnEmptyAlterSheepFields = new System.Windows.Forms.Button();
@@ -57,7 +69,6 @@
             this.buttonSoksau = new System.Windows.Forms.Button();
             this.labelSokSau = new System.Windows.Forms.Label();
             this.textSokSauInstillinger = new System.Windows.Forms.TextBox();
-            this.labelRedigerSau = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,9 +82,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabKart = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnShowSheepPos = new System.Windows.Forms.Button();
             this.tabInstillinger = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxTextsize = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.buttonLagreEndringer = new System.Windows.Forms.Button();
             this.textBoxAdresse = new System.Windows.Forms.TextBox();
@@ -86,10 +104,6 @@
             this.labelGammelPassord = new System.Windows.Forms.Label();
             this.labelEpost = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -100,11 +114,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSauer)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabKart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabInstillinger.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabOversikt
             // 
+            tabOversikt.Controls.Add(this.lblDodeSauer);
+            tabOversikt.Controls.Add(this.lblAntallSauer);
+            tabOversikt.Controls.Add(this.label26);
+            tabOversikt.Controls.Add(this.label25);
+            tabOversikt.Controls.Add(this.lblTemperatur);
+            tabOversikt.Controls.Add(this.lblHjerteslag);
+            tabOversikt.Controls.Add(this.label24);
+            tabOversikt.Controls.Add(this.label23);
+            tabOversikt.Controls.Add(this.label9);
+            tabOversikt.Controls.Add(this.label7);
+            tabOversikt.Controls.Add(this.label8);
+            tabOversikt.Controls.Add(this.button2);
             tabOversikt.Controls.Add(this.dgwSearchSheep);
             tabOversikt.Controls.Add(this.button3);
             tabOversikt.Controls.Add(this.btnEmptyAlterSheepFields);
@@ -132,7 +159,6 @@
             tabOversikt.Controls.Add(this.buttonSoksau);
             tabOversikt.Controls.Add(this.labelSokSau);
             tabOversikt.Controls.Add(this.textSokSauInstillinger);
-            tabOversikt.Controls.Add(this.labelRedigerSau);
             tabOversikt.Location = new System.Drawing.Point(4, 22);
             tabOversikt.Name = "tabOversikt";
             tabOversikt.Padding = new System.Windows.Forms.Padding(3);
@@ -142,27 +168,137 @@
             tabOversikt.UseVisualStyleBackColor = true;
             tabOversikt.Click += new System.EventHandler(this.tabOversikt_Click);
             // 
+            // lblDodeSauer
+            // 
+            this.lblDodeSauer.AutoSize = true;
+            this.lblDodeSauer.Location = new System.Drawing.Point(896, 416);
+            this.lblDodeSauer.Name = "lblDodeSauer";
+            this.lblDodeSauer.Size = new System.Drawing.Size(93, 13);
+            this.lblDodeSauer.TabIndex = 67;
+            this.lblDodeSauer.Text = "Antall sauer i flokk";
+            // 
+            // lblAntallSauer
+            // 
+            this.lblAntallSauer.AutoSize = true;
+            this.lblAntallSauer.Location = new System.Drawing.Point(896, 382);
+            this.lblAntallSauer.Name = "lblAntallSauer";
+            this.lblAntallSauer.Size = new System.Drawing.Size(93, 13);
+            this.lblAntallSauer.TabIndex = 66;
+            this.lblAntallSauer.Text = "Antall sauer i flokk";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(797, 416);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(89, 13);
+            this.label26.TabIndex = 65;
+            this.label26.Text = "Antall døde sauer";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(797, 382);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(93, 13);
+            this.label25.TabIndex = 64;
+            this.label25.Text = "Antall sauer i flokk";
+            // 
+            // lblTemperatur
+            // 
+            this.lblTemperatur.AutoSize = true;
+            this.lblTemperatur.Location = new System.Drawing.Point(874, 126);
+            this.lblTemperatur.Name = "lblTemperatur";
+            this.lblTemperatur.Size = new System.Drawing.Size(0, 13);
+            this.lblTemperatur.TabIndex = 63;
+            // 
+            // lblHjerteslag
+            // 
+            this.lblHjerteslag.AutoSize = true;
+            this.lblHjerteslag.Location = new System.Drawing.Point(874, 92);
+            this.lblHjerteslag.Name = "lblHjerteslag";
+            this.lblHjerteslag.Size = new System.Drawing.Size(0, 13);
+            this.lblHjerteslag.TabIndex = 62;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(797, 126);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(61, 13);
+            this.label24.TabIndex = 61;
+            this.label24.Text = "Temperatur";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(797, 92);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(54, 13);
+            this.label23.TabIndex = 60;
+            this.label23.Text = "Hjerteslag";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(796, 334);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 20);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "Statisikk";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(796, 41);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 20);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Helseinformasjon";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(543, 41);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 20);
+            this.label8.TabIndex = 57;
+            this.label8.Text = "Rediger";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(611, 251);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(72, 42);
+            this.button2.TabIndex = 55;
+            this.button2.Text = "Slett sau";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // dgwSearchSheep
             // 
             this.dgwSearchSheep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwSearchSheep.Location = new System.Drawing.Point(7, 84);
             this.dgwSearchSheep.Name = "dgwSearchSheep";
-            this.dgwSearchSheep.Size = new System.Drawing.Size(265, 407);
+            this.dgwSearchSheep.Size = new System.Drawing.Size(482, 498);
             this.dgwSearchSheep.TabIndex = 54;
             this.dgwSearchSheep.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwSearchSheep_CellContentClick);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(703, 239);
+            this.button3.Location = new System.Drawing.Point(622, 512);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(58, 42);
+            this.button3.Size = new System.Drawing.Size(61, 42);
             this.button3.TabIndex = 53;
             this.button3.Text = "Tøm";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // btnEmptyAlterSheepFields
             // 
-            this.btnEmptyAlterSheepFields.Location = new System.Drawing.Point(388, 239);
+            this.btnEmptyAlterSheepFields.Location = new System.Drawing.Point(550, 251);
             this.btnEmptyAlterSheepFields.Name = "btnEmptyAlterSheepFields";
             this.btnEmptyAlterSheepFields.Size = new System.Drawing.Size(58, 42);
             this.btnEmptyAlterSheepFields.TabIndex = 52;
@@ -172,7 +308,7 @@
             // 
             // btnAlterSheep
             // 
-            this.btnAlterSheep.Location = new System.Drawing.Point(452, 239);
+            this.btnAlterSheep.Location = new System.Drawing.Point(686, 251);
             this.btnAlterSheep.Name = "btnAlterSheep";
             this.btnAlterSheep.Size = new System.Drawing.Size(72, 42);
             this.btnAlterSheep.TabIndex = 51;
@@ -184,7 +320,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(598, 11);
+            this.label20.Location = new System.Drawing.Point(549, 334);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(110, 20);
             this.label20.TabIndex = 49;
@@ -192,21 +328,21 @@
             // 
             // textBoxNyNotat
             // 
-            this.textBoxNyNotat.Location = new System.Drawing.Point(703, 175);
+            this.textBoxNyNotat.Location = new System.Drawing.Point(622, 476);
             this.textBoxNyNotat.Name = "textBoxNyNotat";
             this.textBoxNyNotat.Size = new System.Drawing.Size(136, 20);
             this.textBoxNyNotat.TabIndex = 47;
             // 
             // textBoxNyFdato
             // 
-            this.textBoxNyFdato.Location = new System.Drawing.Point(703, 144);
+            this.textBoxNyFdato.Location = new System.Drawing.Point(622, 446);
             this.textBoxNyFdato.Name = "textBoxNyFdato";
             this.textBoxNyFdato.Size = new System.Drawing.Size(136, 20);
             this.textBoxNyFdato.TabIndex = 46;
             // 
             // textBoxNyNavn
             // 
-            this.textBoxNyNavn.Location = new System.Drawing.Point(703, 111);
+            this.textBoxNyNavn.Location = new System.Drawing.Point(622, 413);
             this.textBoxNyNavn.Name = "textBoxNyNavn";
             this.textBoxNyNavn.Size = new System.Drawing.Size(136, 20);
             this.textBoxNyNavn.TabIndex = 45;
@@ -214,7 +350,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(599, 181);
+            this.label13.Location = new System.Drawing.Point(550, 483);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(33, 13);
             this.label13.TabIndex = 44;
@@ -223,7 +359,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(599, 147);
+            this.label15.Location = new System.Drawing.Point(550, 449);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 13);
             this.label15.TabIndex = 43;
@@ -232,7 +368,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(599, 114);
+            this.label16.Location = new System.Drawing.Point(550, 416);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(33, 13);
             this.label16.TabIndex = 42;
@@ -241,7 +377,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(599, 80);
+            this.label17.Location = new System.Drawing.Point(550, 382);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 13);
             this.label17.TabIndex = 41;
@@ -249,14 +385,15 @@
             // 
             // textBoxNyFlokkID
             // 
-            this.textBoxNyFlokkID.Location = new System.Drawing.Point(703, 77);
+            this.textBoxNyFlokkID.Enabled = false;
+            this.textBoxNyFlokkID.Location = new System.Drawing.Point(622, 379);
             this.textBoxNyFlokkID.Name = "textBoxNyFlokkID";
             this.textBoxNyFlokkID.Size = new System.Drawing.Size(136, 20);
             this.textBoxNyFlokkID.TabIndex = 39;
             // 
             // buttonLeggTilNySau
             // 
-            this.buttonLeggTilNySau.Location = new System.Drawing.Point(767, 239);
+            this.buttonLeggTilNySau.Location = new System.Drawing.Point(686, 512);
             this.buttonLeggTilNySau.Name = "buttonLeggTilNySau";
             this.buttonLeggTilNySau.Size = new System.Drawing.Size(72, 42);
             this.buttonLeggTilNySau.TabIndex = 36;
@@ -266,14 +403,14 @@
             // 
             // textBoxNotat
             // 
-            this.textBoxNotat.Location = new System.Drawing.Point(388, 204);
+            this.textBoxNotat.Location = new System.Drawing.Point(622, 216);
             this.textBoxNotat.Name = "textBoxNotat";
             this.textBoxNotat.Size = new System.Drawing.Size(136, 20);
             this.textBoxNotat.TabIndex = 35;
             // 
             // textBoxFdato
             // 
-            this.textBoxFdato.Location = new System.Drawing.Point(388, 174);
+            this.textBoxFdato.Location = new System.Drawing.Point(622, 186);
             this.textBoxFdato.Name = "textBoxFdato";
             this.textBoxFdato.ReadOnly = true;
             this.textBoxFdato.Size = new System.Drawing.Size(136, 20);
@@ -281,7 +418,7 @@
             // 
             // textBoxNavn
             // 
-            this.textBoxNavn.Location = new System.Drawing.Point(388, 140);
+            this.textBoxNavn.Location = new System.Drawing.Point(622, 152);
             this.textBoxNavn.Name = "textBoxNavn";
             this.textBoxNavn.Size = new System.Drawing.Size(136, 20);
             this.textBoxNavn.TabIndex = 33;
@@ -289,7 +426,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(310, 211);
+            this.label14.Location = new System.Drawing.Point(544, 223);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 13);
             this.label14.TabIndex = 31;
@@ -298,7 +435,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(310, 181);
+            this.label10.Location = new System.Drawing.Point(544, 193);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 13);
             this.label10.TabIndex = 30;
@@ -308,7 +445,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(310, 147);
+            this.label11.Location = new System.Drawing.Point(544, 159);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 13);
             this.label11.TabIndex = 29;
@@ -317,7 +454,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(310, 114);
+            this.label5.Location = new System.Drawing.Point(544, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 28;
@@ -326,7 +463,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(310, 80);
+            this.label4.Location = new System.Drawing.Point(544, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 27;
@@ -334,14 +471,14 @@
             // 
             // textBoxFlokkID
             // 
-            this.textBoxFlokkID.Location = new System.Drawing.Point(388, 107);
+            this.textBoxFlokkID.Location = new System.Drawing.Point(622, 119);
             this.textBoxFlokkID.Name = "textBoxFlokkID";
             this.textBoxFlokkID.Size = new System.Drawing.Size(136, 20);
             this.textBoxFlokkID.TabIndex = 26;
             // 
             // textBoxSauID
             // 
-            this.textBoxSauID.Location = new System.Drawing.Point(388, 73);
+            this.textBoxSauID.Location = new System.Drawing.Point(622, 85);
             this.textBoxSauID.Name = "textBoxSauID";
             this.textBoxSauID.ReadOnly = true;
             this.textBoxSauID.Size = new System.Drawing.Size(136, 20);
@@ -349,7 +486,7 @@
             // 
             // buttonSoksau
             // 
-            this.buttonSoksau.Location = new System.Drawing.Point(207, 54);
+            this.buttonSoksau.Location = new System.Drawing.Point(424, 54);
             this.buttonSoksau.Name = "buttonSoksau";
             this.buttonSoksau.Size = new System.Drawing.Size(65, 24);
             this.buttonSoksau.TabIndex = 23;
@@ -370,18 +507,8 @@
             // 
             this.textSokSauInstillinger.Location = new System.Drawing.Point(6, 57);
             this.textSokSauInstillinger.Name = "textSokSauInstillinger";
-            this.textSokSauInstillinger.Size = new System.Drawing.Size(195, 20);
+            this.textSokSauInstillinger.Size = new System.Drawing.Size(412, 20);
             this.textSokSauInstillinger.TabIndex = 19;
-            // 
-            // labelRedigerSau
-            // 
-            this.labelRedigerSau.AutoSize = true;
-            this.labelRedigerSau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRedigerSau.Location = new System.Drawing.Point(2, 11);
-            this.labelRedigerSau.Name = "labelRedigerSau";
-            this.labelRedigerSau.Size = new System.Drawing.Size(95, 20);
-            this.labelRedigerSau.TabIndex = 17;
-            this.labelRedigerSau.Text = "Rediger sau";
             // 
             // menuStrip1
             // 
@@ -408,14 +535,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.logOutToolStripMenuItem.Text = "Logg ut";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.exitToolStripMenuItem.Text = "Avslutt";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -497,6 +624,10 @@
             // 
             // tabKart
             // 
+            this.tabKart.Controls.Add(this.button6);
+            this.tabKart.Controls.Add(this.dataGridView1);
+            this.tabKart.Controls.Add(this.button5);
+            this.tabKart.Controls.Add(this.button4);
             this.tabKart.Controls.Add(this.button1);
             this.tabKart.Controls.Add(this.btnShowSheepPos);
             this.tabKart.Controls.Add(this.webBrowser1);
@@ -512,11 +643,51 @@
             this.tabKart.UseVisualStyleBackColor = true;
             this.tabKart.Click += new System.EventHandler(this.tabKart_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(208, 590);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(78, 43);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Vis i liste";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 48);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(448, 536);
+            this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.Visible = false;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(90, 590);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(78, 43);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "Vis alle døde sauer";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 590);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(78, 43);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Vis døde sauer";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(282, 590);
+            this.button1.Location = new System.Drawing.Point(376, 590);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 43);
+            this.button1.Size = new System.Drawing.Size(78, 43);
             this.button1.TabIndex = 13;
             this.button1.Text = "Vis alle sauer";
             this.button1.UseVisualStyleBackColor = true;
@@ -524,9 +695,9 @@
             // 
             // btnShowSheepPos
             // 
-            this.btnShowSheepPos.Location = new System.Drawing.Point(6, 590);
+            this.btnShowSheepPos.Location = new System.Drawing.Point(292, 590);
             this.btnShowSheepPos.Name = "btnShowSheepPos";
-            this.btnShowSheepPos.Size = new System.Drawing.Size(172, 43);
+            this.btnShowSheepPos.Size = new System.Drawing.Size(78, 43);
             this.btnShowSheepPos.TabIndex = 6;
             this.btnShowSheepPos.Text = "Vis ruten til sauene";
             this.btnShowSheepPos.UseVisualStyleBackColor = true;
@@ -534,6 +705,9 @@
             // 
             // tabInstillinger
             // 
+            this.tabInstillinger.Controls.Add(this.label6);
+            this.tabInstillinger.Controls.Add(this.comboBoxTextsize);
+            this.tabInstillinger.Controls.Add(this.label21);
             this.tabInstillinger.Controls.Add(this.textBoxID);
             this.tabInstillinger.Controls.Add(this.buttonLagreEndringer);
             this.tabInstillinger.Controls.Add(this.textBoxAdresse);
@@ -546,10 +720,6 @@
             this.tabInstillinger.Controls.Add(this.labelGammelPassord);
             this.tabInstillinger.Controls.Add(this.labelEpost);
             this.tabInstillinger.Controls.Add(this.label12);
-            this.tabInstillinger.Controls.Add(this.label9);
-            this.tabInstillinger.Controls.Add(this.label8);
-            this.tabInstillinger.Controls.Add(this.label7);
-            this.tabInstillinger.Controls.Add(this.label6);
             this.tabInstillinger.Controls.Add(this.label2);
             this.tabInstillinger.Location = new System.Drawing.Point(4, 22);
             this.tabInstillinger.Name = "tabInstillinger";
@@ -560,16 +730,59 @@
             this.tabInstillinger.UseVisualStyleBackColor = true;
             this.tabInstillinger.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(287, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Innstillinger";
+            // 
+            // comboBoxTextsize
+            // 
+            this.comboBoxTextsize.FormattingEnabled = true;
+            this.comboBoxTextsize.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.comboBoxTextsize.Location = new System.Drawing.Point(290, 107);
+            this.comboBoxTextsize.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxTextsize.MaxDropDownItems = 11;
+            this.comboBoxTextsize.MaxLength = 2;
+            this.comboBoxTextsize.Name = "comboBoxTextsize";
+            this.comboBoxTextsize.Size = new System.Drawing.Size(180, 21);
+            this.comboBoxTextsize.TabIndex = 35;
+            this.comboBoxTextsize.SelectedIndexChanged += new System.EventHandler(this.comboBoxTextsize_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(287, 90);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(70, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Skriftstørrelse";
+            // 
             // textBoxID
             // 
             this.textBoxID.Location = new System.Drawing.Point(816, 30);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(33, 20);
             this.textBoxID.TabIndex = 27;
+            this.textBoxID.Visible = false;
             // 
             // buttonLagreEndringer
             // 
-            this.buttonLagreEndringer.Location = new System.Drawing.Point(32, 313);
+            this.buttonLagreEndringer.Location = new System.Drawing.Point(32, 323);
             this.buttonLagreEndringer.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLagreEndringer.Name = "buttonLagreEndringer";
             this.buttonLagreEndringer.Size = new System.Drawing.Size(97, 23);
@@ -661,42 +874,6 @@
             this.label12.TabIndex = 10;
             this.label12.Text = "Telefonnr";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(363, 170);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Logg antall dager";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(363, 139);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Antall sauer på kart";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(363, 109);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Skriftstørrelse";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(363, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Varsel";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -709,8 +886,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1154, 6);
+            this.label3.Location = new System.Drawing.Point(1160, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 7;
@@ -738,6 +917,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabKart.ResumeLayout(false);
             this.tabKart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabInstillinger.ResumeLayout(false);
             this.tabInstillinger.PerformLayout();
             this.ResumeLayout(false);
@@ -762,10 +942,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TabPage tabInstillinger;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelGammelPassord;
         private System.Windows.Forms.Label labelEpost;
@@ -780,7 +956,6 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label labelSokSau;
         private System.Windows.Forms.TextBox textSokSauInstillinger;
-        private System.Windows.Forms.Label labelRedigerSau;
         private System.Windows.Forms.Button buttonSoksau;
         private System.Windows.Forms.TextBox textBoxSauID;
         private System.Windows.Forms.TextBox textBoxNotat;
@@ -811,6 +986,25 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBoxTextsize;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTemperatur;
+        private System.Windows.Forms.Label lblHjerteslag;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label lblDodeSauer;
+        private System.Windows.Forms.Label lblAntallSauer;
     }
 }
 
